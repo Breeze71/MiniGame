@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 163775458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1524559971}
+        m_TargetAssemblyTypeName: V.CookieClicker.CookieManager, Assembly-CSharp
+        m_MethodName: OnResumeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &163775458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +444,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 832113113}
   m_HandleRect: {fileID: 832113112}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1542,6 +1554,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501401293}
   m_CullTransparentMesh: 1
+--- !u!1 &1524559969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1524559970}
+  - component: {fileID: 1524559971}
+  m_Layer: 0
+  m_Name: CookieManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1524559970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524559969}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1524559971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524559969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3bd782a26f7be54a9579030fc9fcb09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookieCountText: {fileID: 835216381}
+  cookiePerSecondText: {fileID: 1501401295}
+  upgradeCanvas: {fileID: 202320741}
+  mainGameCanvas: {fileID: 846258936}
+  cookieObj: {fileID: 1747665429}
+  backgroundObj: {fileID: 970560256}
+  CookieTextPopup: {fileID: 0}
+  upgradeUIToSpawn: {fileID: 0}
+  upgradeUIParent: {fileID: 0}
+  CookiePerSecondObjToSpawn: {fileID: 0}
 --- !u!1 &1562220485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,6 +1864,7 @@ GameObject:
   - component: {fileID: 1747665432}
   - component: {fileID: 1747665431}
   - component: {fileID: 1747665433}
+  - component: {fileID: 1747665434}
   m_Layer: 5
   m_Name: Cookie
   m_TagString: Untagged
@@ -1906,7 +1973,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1747665431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1524559971}
+        m_TargetAssemblyTypeName: CookieManager, Assembly-CSharp
+        m_MethodName: OnCoolieClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1747665434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747665429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961b478c26fe6444692b35801b9e3d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1860631404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,7 +2172,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1917607504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1524559971}
+        m_TargetAssemblyTypeName: V.CookieClicker.CookieManager, Assembly-CSharp
+        m_MethodName: OnUpgradeButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1917607504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,3 +2223,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917607501}
   m_CullTransparentMesh: 1
+--- !u!1001 &5949415089503314977
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490836770800244464, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836573872489897122, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+      propertyPath: m_Name
+      value: CookiePerSecondTimer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
