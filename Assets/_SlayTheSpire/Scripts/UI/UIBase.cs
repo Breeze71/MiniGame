@@ -9,6 +9,16 @@ namespace V.SlayTheSpire.UI
     /// </summary>
     public class UIBase : MonoBehaviour
     {
+        /// <summary>
+        /// 訂閱 OnPointerClick Event (ui 下的 button 用)
+        /// </summary>
+        public UIEventTrigger RegisterEvent(string _name)
+        {
+            Transform _tf = transform.Find(_name);
+
+            return UIEventTrigger.GetUIEventTrigger(_tf.gameObject);
+        }
+
         public virtual void Show()
         {
             gameObject.SetActive(true);

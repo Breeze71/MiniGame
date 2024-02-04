@@ -1,18 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UIEventTrigger : MonoBehaviour
+namespace V.SlayTheSpire.UI
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// IPointerClickHandler 事件監聽
+    /// </summary>
+    public class UIEventTrigger : MonoBehaviour, IPointerClickHandler
     {
-        
-    }
+        public event Action<GameObject, PointerEventData> OnClickEvent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            OnClickEvent?.Invoke(gameObject, eventData);
+        }
+
+        /// <summary> ***
+        /// Static Fuction 獲取某 go 的 UIEventTrigger，若他沒有，加上
+        /// </summary> ***
+        public static UIEventTrigger GetUIEventTrigger(GameObject _go)
+        {
+            UIEventTrigger _trigger = _go.GetComponent<UIEventTrigger>();
+            if(_trigger == null)
+            {
+                _trigger = _go.AddComponent<UIEventTrigger>();
+            }
+
+            return _trigger;
+        }
     }
 }

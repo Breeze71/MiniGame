@@ -10,6 +10,8 @@ namespace V.SlayTheSpire
         private void Start()
         {
             UIManager.Instance.ShowUI<LoginUI>("LoginUI");    
+
+            AudioManager.Instance.PlayBGM("bgm1");
         }
     }
 }
