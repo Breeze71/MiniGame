@@ -9,7 +9,10 @@ namespace V.CookieClicker
     {
         public override void ApplyUpgrade()
         {
-            
+            GameObject _UpgradePerSecGO = Instantiate(CookieManager.Instance.CookiePerSecondObjToSpawn, Vector3.zero, Quaternion.identity);
+            _UpgradePerSecGO.GetComponent<CookiePerSecondTimer>().CookiePerSecond = UpgradeAmount;
+
+            CookieManager.Instance.SimpleCookiePerSecondIncrease(UpgradeAmount);
         }
     }
 }

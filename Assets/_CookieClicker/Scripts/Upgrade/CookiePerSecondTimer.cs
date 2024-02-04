@@ -6,6 +6,9 @@ using V.Utilities;
 
 namespace V.CookieClicker
 {
+    /// <summary>
+    /// 計時器
+    /// </summary>
     public class CookiePerSecondTimer : MonoBehaviour
     {
         public float TimerDuration = 1f;
@@ -29,8 +32,6 @@ namespace V.CookieClicker
             CookieManager.Instance.SimpleCookieIncrease(CookiePerSecond);
 
             timer.StartTimer();
-
-            Debug.Log("TimerDone");
         }
 
         private void Update() 

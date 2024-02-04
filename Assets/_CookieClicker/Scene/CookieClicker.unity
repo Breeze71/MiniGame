@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrade
+  m_text: Resume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: ff257e0282144d8449344b01f61c78a3, type: 2}
   m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1564,6 +1564,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1524559970}
   - component: {fileID: 1524559971}
+  - component: {fileID: 1524559972}
+  - component: {fileID: 1524559973}
   m_Layer: 0
   m_Name: CookieManager
   m_TagString: Untagged
@@ -1600,14 +1602,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookieCountText: {fileID: 835216381}
   cookiePerSecondText: {fileID: 1501401295}
+  MainGameCanvas: {fileID: 846258936}
   upgradeCanvas: {fileID: 202320741}
-  mainGameCanvas: {fileID: 846258936}
   cookieObj: {fileID: 1747665429}
   backgroundObj: {fileID: 970560256}
-  CookieTextPopup: {fileID: 0}
-  upgradeUIToSpawn: {fileID: 0}
-  upgradeUIParent: {fileID: 0}
-  CookiePerSecondObjToSpawn: {fileID: 0}
+  CookieTextPopup: {fileID: 5353819725983883111, guid: 5564dfb80e36eec47ab8884a28870600, type: 3}
+  upgradeUIToSpawn: {fileID: 4128067699437631802, guid: 045b08ce9a5f28545a39f677b03c45d6, type: 3}
+  upgradeUIParent: {fileID: 1473388646}
+  CookiePerSecondObjToSpawn: {fileID: 6836573872489897122, guid: 0cf4bd92774579e4aa0fe5d09a80afba, type: 3}
+  CookieUpgradeSOBases:
+  - {fileID: 11400000, guid: f11b9d41fc0039e46989719a7b69ecbf, type: 2}
+  - {fileID: 11400000, guid: a7c9c7333002e3d44a9d36d68856b5aa, type: 2}
+  - {fileID: 11400000, guid: 42d2a905841a3c241b396813f130f054, type: 2}
+  - {fileID: 11400000, guid: d67bb376aae122c49b4165572cc6eb52, type: 2}
+  - {fileID: 11400000, guid: 3c9740ec14e880e4eaabe3e47cc60adb, type: 2}
+  - {fileID: 11400000, guid: 2b43638f598374e4ebe951d07ab63a2a, type: 2}
+  - {fileID: 11400000, guid: f75a9e203b153c1478cd6694960c63c4, type: 2}
+  - {fileID: 11400000, guid: 59072a0953a03b844a3d35dd2ec984e4, type: 2}
+  - {fileID: 11400000, guid: ed7cbccbede1a9f4590035afc3bef339, type: 2}
+  - {fileID: 11400000, guid: e6f4fdfe70e7c974dbfe35450d586fcd, type: 2}
+  - {fileID: 11400000, guid: 2e0731bf363d25d48925467410d3003d, type: 2}
+  - {fileID: 11400000, guid: cb2188341a021c94dbe9170e870b1118, type: 2}
+--- !u!114 &1524559972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524559969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe4e8f2ee0986140b8a63b2121b0b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1524559973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524559969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c6f33750ecc3f45816ce2af8e0bb4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1562220485
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -16,8 +17,8 @@ namespace V.CookieClicker
         [SerializeField] private TextMeshProUGUI cookiePerSecondText;
 
         [Space]
+        public GameObject MainGameCanvas;
         [SerializeField] private GameObject upgradeCanvas;
-        [SerializeField] private GameObject mainGameCanvas;
         [SerializeField] private GameObject cookieObj;
         [SerializeField] private GameObject backgroundObj;
 
@@ -31,7 +32,14 @@ namespace V.CookieClicker
 
         public double CurrentCookiesCount { get; set; }
         public double CurrentCookiesPerSecond { get; set; }
+
+        [Header("Upgrade")]
+        public CookieUpgradeSOBase[] CookieUpgradeSOBases;
+        private InitializeUpgradeButton initializeUpgradeButton;
         public double CookiesPerClickUpgrade { get; set; }
+
+        [Header("Formatted Display Num")]
+        private CookiesNumDisplay cookiesNumDisplay;
 
         #region Life Cycle
         private void Awake() 
@@ -42,6 +50,9 @@ namespace V.CookieClicker
             }
 
             Instance = this;
+
+            cookiesNumDisplay = GetComponent<CookiesNumDisplay>();
+            initializeUpgradeButton = GetComponent<InitializeUpgradeButton>();
         }
 
         private void Start() 
@@ -50,7 +61,9 @@ namespace V.CookieClicker
             UpdateCookiePerSecondText();
 
             upgradeCanvas.SetActive(false);
-            mainGameCanvas.SetActive(true);
+            MainGameCanvas.SetActive(true);
+
+            initializeUpgradeButton.InitializeButton(CookieUpgradeSOBases, upgradeUIToSpawn, upgradeUIParent);
         }
         #endregion
 
@@ -61,6 +74,8 @@ namespace V.CookieClicker
 
             cookieObj.transform.DOBlendableScaleBy(new Vector3(0.05f, 0.05f, 0.05f), 0.05f).OnComplete(CookieScaleBack);
             backgroundObj.transform.DOBlendableScaleBy(new Vector3(0.05f, 0.05f, 0.05f), 0.05f).OnComplete(BackgroundScaleBack);
+        
+            PopupTextUI.Create(1 + CookiesPerClickUpgrade);
         } 
 
         private void CookieScaleBack()
@@ -83,11 +98,13 @@ namespace V.CookieClicker
         #region UI Update
         private void UpdateCookieCountText()
         {
-            cookieCountText.text = CurrentCookiesCount.ToString();
+            // cookieCountText.text = CurrentCookiesCount.ToString();
+            cookiesNumDisplay.UpdateCookieText(CurrentCookiesCount, cookieCountText);
         }
         private void UpdateCookiePerSecondText()
         {
-            cookiePerSecondText.text = CurrentCookiesPerSecond.ToString() + " P/S";
+            // cookiePerSecondText.text = CurrentCookiesPerSecond.ToString() + " P/S";
+            cookiesNumDisplay.UpdateCookieText(CurrentCookiesPerSecond, cookiePerSecondText, " P/S");
         }
         #endregion
     
@@ -114,6 +131,28 @@ namespace V.CookieClicker
         {
             CurrentCookiesPerSecond += _amount;
             UpdateCookiePerSecondText();
+        }
+        #endregion
+    
+        #region Upgrade Button Click
+        /// <summary>
+        /// 升級餅乾產生數量
+        /// </summary>
+        public void OnUpgradeButtonClick(CookieUpgradeSOBase _cookieUpgradeSOBase, UpgradeButtonUI _upgradeButtonUI)
+        {
+            if(CurrentCookiesCount >= _cookieUpgradeSOBase.CurrentUpgradeCost)
+            {
+                _cookieUpgradeSOBase.ApplyUpgrade();
+
+                // 扣掉升級數
+                CurrentCookiesCount -= _cookieUpgradeSOBase.CurrentUpgradeCost;
+                UpdateCookieCountText();
+                
+                // 計算下次升級花費
+                _cookieUpgradeSOBase.CurrentUpgradeCost = 
+                    Mathf.Round((float)(_cookieUpgradeSOBase.CurrentUpgradeCost * (1 + _cookieUpgradeSOBase.CostIncreaseMultiplierPerPurchase)));
+                _upgradeButtonUI.UpgradeCostTEXT.text = "Cost: " + _cookieUpgradeSOBase.CurrentUpgradeCost;
+            }
         }
         #endregion
     }
