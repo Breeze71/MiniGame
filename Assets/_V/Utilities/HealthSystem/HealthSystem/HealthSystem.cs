@@ -23,6 +23,11 @@ public class HealthSystem
         return (float)health / healthMax;
     }
 
+    public void ResetHealth()
+    {
+        health = healthMax;        
+    }
+
     public void TakeDamage(int _damageAmount)
     {
         health -= _damageAmount;
