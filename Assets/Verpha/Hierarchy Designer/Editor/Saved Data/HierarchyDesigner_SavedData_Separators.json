@@ -113,6 +113,25 @@
             "fontSize": 14,
             "textAlignment": 4,
             "backgroundImageType": 0
+        },
+        {
+            "name": "Presenter",
+            "textColor": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "backgroundColor": {
+                "r": 0.18431372940540315,
+                "g": 0.20784315466880799,
+                "b": 0.25882354378700259,
+                "a": 1.0
+            },
+            "fontStyle": 1,
+            "fontSize": 14,
+            "textAlignment": 4,
+            "backgroundImageType": 0
         }
     ]
 }
