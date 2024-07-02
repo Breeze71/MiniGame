@@ -19,11 +19,12 @@ namespace V.TowerDefense
         [Expandable] [SerializeField] private SoilderSO _soilderConfig;
         [SerializeField] private BoxCheck _groundCheck;
         [SerializeField] private LayerMask _hitLayer;
+        [SerializeField] private float _moveSpeed;
 
         protected Rigidbody2D _rb;
         public EMoveDirection _eMoveDir{get; protected set;}
         protected Vector2 _moveDir;
-        protected Vector2 _hitBoxOffest;
+        protected Vector2 _hitBoxOffest = Vector2.zero;
 
         // attack
         private Timer _attackTimer;
@@ -32,6 +33,10 @@ namespace V.TowerDefense
         [SerializeField] private float _disableTImer = .25f;
         private Coroutine _disableMoveCoroutine;
         [SerializeField] private bool _canMove = true;
+
+
+
+        [SerializeField] private KnockBack knockBack;
 
         #region LC
         private void Awake() 
@@ -60,7 +65,7 @@ namespace V.TowerDefense
             if(!IsGrounded())   return;
             if(!_canMove)   return;
             
-            _rb.velocity = _moveDir;
+            _rb.velocity = _moveDir * _moveSpeed;
         }
 
         private void Update() 
@@ -96,6 +101,7 @@ namespace V.TowerDefense
             if(hitUnitColl != null)
             {
                 HitDamagableCollEvent?.Invoke(hitUnitColl, _soilderConfig.Attack);
+                // knockBack.StartKnockBack(_eMoveDir);
                 
                 _canAttack = false;
                 _attackTimer.StartTimer();
@@ -106,17 +112,13 @@ namespace V.TowerDefense
         {
             _canAttack = true;
         }
-
-        private void OnDrawGizmosSelected() 
+        private void OnDrawGizmos() 
         {
             if(_hitRangeConfig == null)   return;
 
             Gizmos.color = Color.red;
 
-            Vector2 newCenter = new Vector2(transform.position.x + _hitRangeConfig.HitBox.center.x * (float)_eMoveDir, 
-                transform.position.y + _hitRangeConfig.HitBox.center.y);
-
-            Gizmos.DrawWireCube(newCenter, _hitRangeConfig.HitBox.size);
+            Gizmos.DrawWireCube(_hitBoxOffest, _hitRangeConfig.HitBox.size);
         }
         #endregion
 
@@ -148,9 +150,15 @@ namespace V.TowerDefense
             Debug.Log(gameObject.name + HealthSystem.GetHealthAmount());
             if(HealthSystem.GetHealthAmount() <= 0)
             {
-                gameObject.SetActive(false);
+                StartCoroutine(Coroutine_DisableGO());
             }
 
+        }
+        
+        private IEnumerator Coroutine_DisableGO()
+        {
+            yield return new WaitForEndOfFrame();
+            gameObject.SetActive(false);
         }
     }
 }

@@ -2114,31 +2114,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626799106344734663, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 686c42d098923804480fdcf0d33784ae, type: 2}
-    - target: {fileID: 5285093939887325243, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5285093939887325243, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 686c42d098923804480fdcf0d33784ae, type: 2}
-    - target: {fileID: 5285093939887325243, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 768
+    - target: {fileID: 3626799106344734663, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
       propertyPath: _canMove
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7133130764147245001, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: _knockBackTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7133130764147245001, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: eMoveDirection
+    - target: {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+      propertyPath: _moveSpeed
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4951,28 +4939,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3626799106344734663, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 686c42d098923804480fdcf0d33784ae, type: 2}
-    - target: {fileID: 5285093939887325243, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Interpolate
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5285093939887325243, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 686c42d098923804480fdcf0d33784ae, type: 2}
-    - target: {fileID: 5285093939887325243, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 768
-      objectReference: {fileID: 0}
-    - target: {fileID: 7631363882621609869, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: eMoveDirection
-      value: -1
+    - target: {fileID: 3626799106344734663, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
       propertyPath: _canMove
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
+      propertyPath: _moveSpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

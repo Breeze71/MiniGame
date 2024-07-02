@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 6869377638092075353}
-  _knockBack: {fileID: 7133130764147245001}
+  _knockBack: {fileID: 0}
   _flashControl: {fileID: 6907865134283953331}
   _squashAndStretch: {fileID: 1892906755287067123}
 --- !u!1 &817724188411529885
@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 5285093939887325243}
   - component: {fileID: 3626799106344734663}
   - component: {fileID: 6869377638092075353}
-  - component: {fileID: 7133130764147245001}
   m_Layer: 8
   m_Name: Soilder
   m_TagString: Untagged
@@ -156,9 +155,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6869377638092075353
 MonoBehaviour:
@@ -172,31 +171,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e95413ef9add904ab0044e730b07cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMax: 20
+  _healthMax: 100
   _hitRangeConfig: {fileID: 11400000, guid: bb30ea5bf3ed1324b879559f1061f1ff, type: 2}
   _soilderConfig: {fileID: 11400000, guid: 57aed36a343f4e2448e4d92b9f9d8916, type: 2}
   _groundCheck: {fileID: 4577394936802596508}
   _hitLayer:
     serializedVersion: 2
     m_Bits: 512
+  _moveSpeed: 1
   _disableTImer: 0.25
-  _canMove: 0
---- !u!114 &7133130764147245001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817724188411529885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e74b00c1a9f7c104998bcdc895abb3a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _knockBackTime: 0.25
-  _knockBackForce: 6
-  _knockDir: {x: 2, y: 0.5}
-  eMoveDirection: 1
+  _canMove: 1
+  knockBack: {fileID: 0}
 --- !u!1 &4306082110112711933
 GameObject:
   m_ObjectHideFlags: 0

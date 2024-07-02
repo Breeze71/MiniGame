@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using NaughtyAttributes;
+
 using UnityEngine;
 
 namespace V.TowerDefense
@@ -12,7 +9,7 @@ namespace V.TowerDefense
         {
             _eMoveDir = EMoveDirection.Right;
 
-            _moveDir = new Vector2((float)_eMoveDir, _rb.velocity.y);
+            _moveDir = new Vector2((float)_eMoveDir, _rb.velocity.y).normalized;
 
             base.Start();
         }

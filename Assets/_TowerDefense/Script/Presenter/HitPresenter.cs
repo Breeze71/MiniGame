@@ -35,7 +35,6 @@ namespace V.TowerDefense
                 
                 _squashAndStretch.PlaySquashAndStretch();
                 _flashControl.StartFlash();
-                _knockBack.StartKnockBack(_unit._eMoveDir);
             }
         }
 

@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace V.TowerDefense
 {
@@ -11,7 +9,7 @@ namespace V.TowerDefense
         {
             _eMoveDir = EMoveDirection.Left;
 
-            _moveDir = new Vector2((float)_eMoveDir, _rb.velocity.y);
+            _moveDir = new Vector2((float)_eMoveDir, _rb.velocity.y).normalized;
             
             base.Start();
         }
