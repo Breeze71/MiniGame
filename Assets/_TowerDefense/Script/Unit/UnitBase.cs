@@ -17,16 +17,21 @@ namespace V.TowerDefense
         [SerializeField] private int _healthMax;
         [Expandable][SerializeField] protected HitRangeSO _hitRangeConfig;
         [Expandable] [SerializeField] private SoilderSO _soilderConfig;
-        [SerializeField] private LayerMask hitLayer;
+        [SerializeField] private BoxCheck _groundCheck;
+        [SerializeField] private LayerMask _hitLayer;
 
         protected Rigidbody2D _rb;
-        protected EMoveDirection _eMoveDir;
+        public EMoveDirection _eMoveDir{get; protected set;}
         protected Vector2 _moveDir;
         protected Vector2 _hitBoxOffest;
 
         // attack
         private Timer _attackTimer;
         private bool _canAttack = true;
+
+        [SerializeField] private float _disableTImer = .25f;
+        private Coroutine _disableMoveCoroutine;
+        [SerializeField] private bool _canMove = true;
 
         #region LC
         private void Awake() 
@@ -49,7 +54,12 @@ namespace V.TowerDefense
         }
 
         private void FixedUpdate() 
-        {
+        {            
+            HitDetect();
+
+            if(!IsGrounded())   return;
+            if(!_canMove)   return;
+            
             _rb.velocity = _moveDir;
         }
 
@@ -58,7 +68,6 @@ namespace V.TowerDefense
             _attackTimer.Tick();
 
             SetHitBox(_eMoveDir);
-            HitDetect();
         }
 
         private void OnDisable() 
@@ -83,7 +92,7 @@ namespace V.TowerDefense
             if(!_canAttack) return;
 
             Collider2D hitUnitColl;
-            hitUnitColl = Physics2D.OverlapBox(_hitBoxOffest, _hitRangeConfig.HitBox.size, 0f, hitLayer);
+            hitUnitColl = Physics2D.OverlapBox(_hitBoxOffest, _hitRangeConfig.HitBox.size, 0f, _hitLayer);
             if(hitUnitColl != null)
             {
                 HitDamagableCollEvent?.Invoke(hitUnitColl, _soilderConfig.Attack);
@@ -110,13 +119,38 @@ namespace V.TowerDefense
             Gizmos.DrawWireCube(newCenter, _hitRangeConfig.HitBox.size);
         }
         #endregion
-    
+
+        #region Check
+        public bool IsGrounded()
+        {
+            return _groundCheck.GetComponent<ICheck>().Check();
+        }
+        #endregion
+
+        public void StartDisableMove()
+        {
+            if(_disableMoveCoroutine != null)
+            {
+                StopCoroutine(_disableMoveCoroutine);
+            }
+            StartCoroutine(Coroutine_DisableMovement());
+        }
+        private IEnumerator Coroutine_DisableMovement()
+        {
+            _canMove = false;
+            yield return new WaitForSeconds(_disableTImer);
+            _canMove = true;
+        }
+
+
         private void HealthSystem_HealthChangedEvent()
         {
-            if(HealthSystem.GetHealthAmount() == 0)
+            Debug.Log(gameObject.name + HealthSystem.GetHealthAmount());
+            if(HealthSystem.GetHealthAmount() <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
+
         }
     }
 }

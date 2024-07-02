@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace V.TowerDefense
 {
-    [CreateAssetMenu(fileName = "SoilderConfig", menuName = "TowerDefnse / SoilderConfig")]
+    [CreateAssetMenu(fileName = "Soilder Config", menuName = "Tower Defnse / Soilder Config")]
     public class SoilderSO : ScriptableObject
     {
         [ShowAssetPreview]

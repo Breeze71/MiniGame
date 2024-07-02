@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace V.TowerDefense
 {
@@ -13,6 +14,11 @@ namespace V.TowerDefense
             _moveDir = new Vector2((float)_eMoveDir, _rb.velocity.y);
             
             base.Start();
+        }
+
+        public void Spawn(Transform transform)
+        {
+            Instantiate(this, transform);
         }
     }
 }

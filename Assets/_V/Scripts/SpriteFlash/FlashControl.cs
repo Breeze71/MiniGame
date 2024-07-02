@@ -40,7 +40,6 @@ public class FlashControl : MonoBehaviour
 
     private IEnumerator Coroutine_Flash(float time)
     {
-        Debug.Log("StartFlash");
         _flashMat.SetColor("_Color", _invincibleColor * 2f);
 
         float currentFlashAmount = 0f;

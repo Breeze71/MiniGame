@@ -12,6 +12,14 @@ namespace V.TowerDefense
 
         private void OnEnable() 
         {
+            if(_unit.HealthSystem != null)
+            {
+                _unit.HealthSystem.HealthChangedEvent += Unit_OnHealthChanged;
+            }
+        }
+
+        private void Start() 
+        {
             _unit.HealthSystem.HealthChangedEvent += Unit_OnHealthChanged;
         }
 
@@ -26,7 +34,7 @@ namespace V.TowerDefense
 
             if(_unit.HealthSystem.GetHealthAmount() == 0)
             {
-                Destroy(_unit.gameObject);
+                
                 // return to pool
             }
         }

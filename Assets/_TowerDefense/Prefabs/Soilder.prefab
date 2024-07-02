@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 6869377638092075353}
+  _knockBack: {fileID: 7133130764147245001}
+  _flashControl: {fileID: 6907865134283953331}
+  _squashAndStretch: {fileID: 1892906755287067123}
 --- !u!1 &817724188411529885
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +60,7 @@ GameObject:
   - component: {fileID: 5285093939887325243}
   - component: {fileID: 3626799106344734663}
   - component: {fileID: 6869377638092075353}
+  - component: {fileID: 7133130764147245001}
   m_Layer: 8
   m_Name: Soilder
   m_TagString: Untagged
@@ -79,6 +83,7 @@ Transform:
   m_Children:
   - {fileID: 5509073634965220902}
   - {fileID: 2833008863314609003}
+  - {fileID: 914478305481759258}
   - {fileID: 5621922148382736536}
   - {fileID: 5377024050028597447}
   m_Father: {fileID: 0}
@@ -92,13 +97,13 @@ BoxCollider2D:
   m_GameObject: {fileID: 817724188411529885}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 686c42d098923804480fdcf0d33784ae, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -144,7 +149,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 686c42d098923804480fdcf0d33784ae, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -167,12 +172,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e95413ef9add904ab0044e730b07cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthMax: 100
+  _healthMax: 20
   _hitRangeConfig: {fileID: 11400000, guid: bb30ea5bf3ed1324b879559f1061f1ff, type: 2}
   _soilderConfig: {fileID: 11400000, guid: 57aed36a343f4e2448e4d92b9f9d8916, type: 2}
-  hitLayer:
+  _groundCheck: {fileID: 4577394936802596508}
+  _hitLayer:
     serializedVersion: 2
     m_Bits: 512
+  _disableTImer: 0.25
+  _canMove: 0
+--- !u!114 &7133130764147245001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817724188411529885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74b00c1a9f7c104998bcdc895abb3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockBackTime: 0.25
+  _knockBackForce: 6
+  _knockDir: {x: 2, y: 0.5}
+  eMoveDirection: 1
 --- !u!1 &4306082110112711933
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +243,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unit: {fileID: 6869377638092075353}
   _healthBarUI: {fileID: 2340038984559758500}
+--- !u!1 &5650309201349181768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 914478305481759258}
+  - component: {fileID: 4577394936802596508}
+  m_Layer: 8
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &914478305481759258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5650309201349181768}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3132916937388818926}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4577394936802596508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5650309201349181768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bf6dfe99681374e990398e7232941e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheckMask:
+    serializedVersion: 2
+    m_Bits: 64
+  width: 0.36
+  height: 0.1
 --- !u!1 &8063841293575156003
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +303,8 @@ GameObject:
   - component: {fileID: 5509073634965220902}
   - component: {fileID: 8572142905278598170}
   - component: {fileID: 5536998836494072825}
+  - component: {fileID: 1892906755287067123}
+  - component: {fileID: 6907865134283953331}
   m_Layer: 0
   m_Name: Visiual
   m_TagString: Untagged
@@ -272,7 +347,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 99b000f0f82351047b1a2b9207006104, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -325,6 +400,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1892906755287067123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063841293575156003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a182be6dd5e58468f38bbc96f8ffce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  affectTransfrom: {fileID: 0}
+  so: {fileID: 11400000, guid: e936550ef94e560448a6f2c472780063, type: 2}
+--- !u!114 &6907865134283953331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063841293575156003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d70704e2326994682d3f6975b29e58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _invincibleColor: {r: 1, g: 0.2784314, b: 0.34117648, a: 1}
+  _flashTime: 0.25
+  _spriteRenderer: {fileID: 8572142905278598170}
 --- !u!1001 &4433166397502129094
 PrefabInstance:
   m_ObjectHideFlags: 0

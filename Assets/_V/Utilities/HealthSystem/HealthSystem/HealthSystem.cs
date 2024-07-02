@@ -33,6 +33,7 @@ public class HealthSystem
         health -= _damageAmount;
 
         if(health <= 0) health = 0;
+
         HealthChangedEvent?.Invoke();
     }
 
@@ -41,6 +42,7 @@ public class HealthSystem
         health += _healthAmount;
 
         if(health >= healthMax) health = healthMax;
+        
         HealthChangedEvent?.Invoke();
     }
 }
