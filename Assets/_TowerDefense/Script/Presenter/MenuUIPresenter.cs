@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace V.TowerDefense
 {
-    public class MenuPresenter : MonoBehaviour
+    public class MenuUIPresenter : MonoBehaviour
     {
         [SerializeField] private MenuUI _menuUI;
 

@@ -12,25 +12,23 @@ namespace V.TowerDefense
 
         private void OnEnable() 
         {
-            if(_unit.HealthSystem != null)
-            {
-                _unit.HealthSystem.HealthChangedEvent += Unit_OnHealthChanged;
-            }
-        }
-
-        private void Start() 
-        {
-            _unit.HealthSystem.HealthChangedEvent += Unit_OnHealthChanged; 
+            _unit.HealthSystem.HealthChangedEvent += Unit_OnHealthChanged;
         }
 
         private void OnDisable() 
         {
-            // _unit.HealthSystem.HealthChangedEvent -= Unit_OnHealthChanged;                
+            _unit.HealthSystem.HealthChangedEvent -= Unit_OnHealthChanged;                
         }
 
         private void Unit_OnHealthChanged()
         {
             _healthBarUI.SetBarUI(_unit.HealthSystem.GetHealthPercent());
+
+            if(_unit.HealthSystem.GetHealthAmount() == 0)
+            {
+                Destroy(_unit.gameObject);
+                // return to pool
+            }
         }
     }
 }

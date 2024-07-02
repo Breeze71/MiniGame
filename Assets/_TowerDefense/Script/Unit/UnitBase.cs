@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using NaughtyAttributes;
 using UnityEngine;
+using Timer = V.Utilities.Timer;
 
 namespace V.TowerDefense
 {
@@ -14,26 +16,36 @@ namespace V.TowerDefense
 
         [SerializeField] private int _healthMax;
         [Expandable][SerializeField] protected HitRangeSO _hitRangeConfig;
+        [Expandable] [SerializeField] private SoilderSO _soilderConfig;
         [SerializeField] private LayerMask hitLayer;
-        public int damageAmount = 30;
 
         protected Rigidbody2D _rb;
         protected EMoveDirection _eMoveDir;
         protected Vector2 _moveDir;
         protected Vector2 _hitBoxOffest;
 
+        // attack
+        private Timer _attackTimer;
+        private bool _canAttack = true;
+
         #region LC
         private void Awake() 
         {
             _rb = GetComponent<Rigidbody2D>();
 
-            HealthSystem = new HealthSystem(_healthMax);    
-            Debug.Log("awale");
+            HealthSystem = new HealthSystem(_healthMax);
+            _attackTimer = new Timer(_soilderConfig.AttackTimerMax);
+        }
+
+        private void OnEnable() 
+        {
+            _attackTimer.OnTimerDone += AttackTimer_OnTimerDone;
+            HealthSystem.HealthChangedEvent += HealthSystem_HealthChangedEvent;
         }
 
         protected virtual void Start() 
         {
-            SetHitBox();
+            SetHitBox(_eMoveDir);
         }
 
         private void FixedUpdate() 
@@ -43,35 +55,68 @@ namespace V.TowerDefense
 
         private void Update() 
         {
+            _attackTimer.Tick();
+
+            SetHitBox(_eMoveDir);
             HitDetect();
         }
 
         private void OnDisable() 
         {
+            _attackTimer.OnTimerDone -= AttackTimer_OnTimerDone;
+            HealthSystem.HealthChangedEvent -= HealthSystem_HealthChangedEvent;
+            
             HealthSystem.ResetHealth();
         }
         #endregion
 
+        #region Hit Detect
         // Set up hit box from hit range so
-        protected virtual void SetHitBox() {}
-
+        private void SetHitBox(EMoveDirection eMoveDirection)
+        {
+            _hitBoxOffest.Set(transform.position.x + _hitRangeConfig.HitBox.center.x * (float)eMoveDirection, 
+                transform.position.y + _hitRangeConfig.HitBox.center.y);
+        }
+        
         private void HitDetect()
         {
+            if(!_canAttack) return;
+
             Collider2D hitUnitColl;
             hitUnitColl = Physics2D.OverlapBox(_hitBoxOffest, _hitRangeConfig.HitBox.size, 0f, hitLayer);
-            Debug.Log(hitUnitColl);
             if(hitUnitColl != null)
             {
-                HitDamagableCollEvent?.Invoke(hitUnitColl, damageAmount);
-            }            
+                HitDamagableCollEvent?.Invoke(hitUnitColl, _soilderConfig.Attack);
+                
+                _canAttack = false;
+                _attackTimer.StartTimer();
+            }   
+        }
+
+        private void AttackTimer_OnTimerDone()
+        {
+            _canAttack = true;
         }
 
         private void OnDrawGizmosSelected() 
         {
             if(_hitRangeConfig == null)   return;
+
             Gizmos.color = Color.red;
 
-            Gizmos.DrawWireCube(transform.position + (Vector3)_hitRangeConfig.HitBox.center, _hitRangeConfig.HitBox.size);
+            Vector2 newCenter = new Vector2(transform.position.x + _hitRangeConfig.HitBox.center.x * (float)_eMoveDir, 
+                transform.position.y + _hitRangeConfig.HitBox.center.y);
+
+            Gizmos.DrawWireCube(newCenter, _hitRangeConfig.HitBox.size);
+        }
+        #endregion
+    
+        private void HealthSystem_HealthChangedEvent()
+        {
+            if(HealthSystem.GetHealthAmount() == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

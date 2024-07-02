@@ -18,12 +18,10 @@ namespace V.TowerDefense
         {
             UnitBase hitUnit;
             coll.gameObject.TryGetComponent<UnitBase>(out hitUnit);
-            Debug.Log("hit");
             
             if(hitUnit != null)
             {
                 hitUnit.HealthSystem.TakeDamage(damageAmount);
-                Debug.Log("damage");
             }
         }
 
