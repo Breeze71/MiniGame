@@ -4,7 +4,7 @@
     "showTransformComponent": true,
     "showComponentIconsForFolders": true,
     "showTag": false,
-    "showLayer": false,
+    "showLayer": true,
     "showHierarchyTree": true,
     "showHierarchyButtons": false,
     "disableHierarchyDesignerDuringPlayMode": true,

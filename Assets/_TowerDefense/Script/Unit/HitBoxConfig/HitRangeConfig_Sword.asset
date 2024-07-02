@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c10442255e0c76d43bd70a07b60a2e16, type: 3}
-  m_Name: HitBoxConfig_Sword
+  m_Name: HitRangeConfig_Sword
   m_EditorClassIdentifier: 
-  <HitBox>k__BackingField:
+  _eDetectType: 0
+  HitBox:
     serializedVersion: 2
     x: 0.2
-    y: 0
+    y: -0.15
     width: 0.15
-    height: 0.2
+    height: 0.3
+  Range: 0

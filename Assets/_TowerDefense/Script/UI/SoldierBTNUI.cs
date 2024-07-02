@@ -12,7 +12,7 @@ namespace V.TowerDefense
         // health display
         // atk dis
         // soilder so
-        [Expandable] public SoilderSO soilderConfig;
+        [Expandable] public UnitSO soilderConfig;
         [field : SerializeField] public Button Button {get; private set;}
 
         [SerializeField] private TextMeshProUGUI _attackTEXT;

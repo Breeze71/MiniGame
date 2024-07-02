@@ -1191,6 +1191,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525603265}
   m_CullTransparentMesh: 1
+--- !u!1001 &577245344
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 817724188411529885, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_Name
+      value: PlayerArcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.537
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
 --- !u!224 &603132951 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7268450770535190745, guid: b88039e6fb17c714b96c3dc105bcc3dc, type: 3}
@@ -2146,7 +2203,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 817724188411529885, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
       propertyPath: m_Name
-      value: Soilder
+      value: PlayerSoilder
       objectReference: {fileID: 0}
     - target: {fileID: 3132916937388818926, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2187,18 +2244,6 @@ PrefabInstance:
     - target: {fileID: 3132916937388818926, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289520966165770065, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: _knockBack
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285093939887325243, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-      propertyPath: knockBack
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4865,14 +4910,14 @@ MonoBehaviour:
   - timeToNextWave: 5
     timeToNextEnemy: 0.5
     enemyList:
-    - {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-    - {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
+    - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
+    - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
   - timeToNextWave: 6
     timeToNextEnemy: 2
     enemyList:
-    - {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-    - {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-    - {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
+    - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
+    - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
+    - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
 --- !u!1 &1676461651
 GameObject:
   m_ObjectHideFlags: 0
@@ -5049,7 +5094,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 817724188411529885, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: EnemySoilder
       objectReference: {fileID: 0}
     - target: {fileID: 3132916937388818926, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5090,18 +5135,6 @@ PrefabInstance:
     - target: {fileID: 3132916937388818926, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3289520966165770065, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: _knockBack
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285093939887325243, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 9181572405190582049, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-      propertyPath: knockBack
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6136,6 +6169,9 @@ SceneRoots:
   - {fileID: 2085960000}
   - {fileID: 411765868}
   - {fileID: 1671720830}
+  - {fileID: 864841978}
+  - {fileID: 577245344}
+  - {fileID: 1800584672}
   - {fileID: 1006582752}
   - {fileID: 1609707496}
   - {fileID: 606911022}
@@ -6143,5 +6179,3 @@ SceneRoots:
   - {fileID: 1834071617}
   - {fileID: 105313259}
   - {fileID: 952910906}
-  - {fileID: 864841978}
-  - {fileID: 1800584672}

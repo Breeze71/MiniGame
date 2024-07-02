@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 571f97d2ba8e24447904513bfcc73618, type: 3}
-  m_Name: SoilderConfig
+  m_Name: EnemySoilderConfig
   m_EditorClassIdentifier: 
-  soilderPrefabs: {fileID: 817724188411529885, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+  soilderPrefabs: {fileID: 817724188411529885, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
   <Attack>k__BackingField: 15
   <Health>k__BackingField: 100
   <AttackTimerMax>k__BackingField: 0.25
   DamagableLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256

@@ -9,7 +9,6 @@ namespace V.TowerDefense
     public class HitPresenter : MonoBehaviour
     {
         [SerializeField] private UnitBase _unit;
-        [SerializeField] private KnockBack _knockBack;
         [SerializeField] private FlashControl _flashControl;
         [SerializeField] private SquashAndStretch _squashAndStretch;
 

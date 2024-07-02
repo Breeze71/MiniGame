@@ -62,11 +62,11 @@ namespace V.TowerDefense
     {
         public float timeToNextWave;
         [SerializeField] private float timeToNextEnemy;
-        [SerializeField] private Enemy[] enemyList;
+        [SerializeField] private UnitBase[] enemyList;
 
         public IEnumerator Coroutine_SpawnEnemies(Transform _spawnPos)
         {
-            foreach(Enemy enemy in enemyList)
+            foreach(UnitBase enemy in enemyList)
             {
                 enemy.Spawn(_spawnPos);
                 
