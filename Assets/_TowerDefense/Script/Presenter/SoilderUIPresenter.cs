@@ -14,7 +14,7 @@ namespace V.TowerDefense
             _soilderUI.SoilderBTNEvent += SoilderUI_SoilderBTNEvent;
         }
 
-        private void SoilderUI_SoilderBTNEvent(SoilderBTNUI buttonUI)
+        private void SoilderUI_SoilderBTNEvent(SoldierBTNUI buttonUI)
         {
             // spawn soilder
             Debug.Log("btn press");

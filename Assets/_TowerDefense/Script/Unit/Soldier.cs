@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace V.TowerDefense
 {
-    public class Soilder : UnitBase
+    public class Soldier : UnitBase
     {        
         protected override void Start()
         {

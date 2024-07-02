@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace V.TowerDefense
 {
-    public class SoilderBTNUI : MonoBehaviour
+    public class SoldierBTNUI : MonoBehaviour
     {
         // health display
         // atk dis

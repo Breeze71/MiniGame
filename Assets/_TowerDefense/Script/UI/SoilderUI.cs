@@ -9,18 +9,18 @@ namespace V.TowerDefense
 {
     public class SoilderUI : MonoBehaviour
     {
-        public event Action<SoilderBTNUI> SoilderBTNEvent;
+        public event Action<SoldierBTNUI> SoilderBTNEvent;
 
-        [SerializeField] private List<SoilderBTNUI> _soilderBTNs;
+        [SerializeField] private List<SoldierBTNUI> _soilderBTNs;
 
         private void Awake() 
         {
-            _soilderBTNs = new List<SoilderBTNUI>(GetComponentsInChildren<SoilderBTNUI>());
+            _soilderBTNs = new List<SoldierBTNUI>(GetComponentsInChildren<SoldierBTNUI>());
         }
 
         private void Start() 
         {
-            foreach(SoilderBTNUI soilderBTN in _soilderBTNs)
+            foreach(SoldierBTNUI soilderBTN in _soilderBTNs)
             {
                 soilderBTN.Button.onClick.AddListener(() =>
                 {
