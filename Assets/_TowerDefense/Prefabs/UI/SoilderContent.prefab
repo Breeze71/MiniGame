@@ -370,6 +370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soilderConfig: {fileID: 11400000, guid: 57aed36a343f4e2448e4d92b9f9d8916, type: 2}
+  <Button>k__BackingField: {fileID: 0}
+  _attackTEXT: {fileID: 8339141342993703674}
+  _healthTEXT: {fileID: 8479277303842758985}
 --- !u!1 &487878382127700185
 GameObject:
   m_ObjectHideFlags: 0
