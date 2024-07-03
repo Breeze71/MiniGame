@@ -16,6 +16,7 @@ MonoBehaviour:
   <Attack>k__BackingField: 15
   <Health>k__BackingField: 100
   <AttackTimerMax>k__BackingField: 0.25
-  DamagableLayer:
+  <DamagableLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 512
+  <Cost>k__BackingField: 5

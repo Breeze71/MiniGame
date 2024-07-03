@@ -11,6 +11,7 @@ namespace V.TowerDefense
         [ShowAssetPreview]
         public GameObject soilderPrefabs;
 
+        [field: SerializeField] public int Level {get; set;} = 1;
         [field : SerializeField] public int Attack {get; set;} = 15;
         [field : SerializeField] public int Health {get; set;} = 100; 
         [field : SerializeField] public float AttackTimerMax {get; set;} = .25f;

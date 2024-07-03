@@ -119,15 +119,18 @@ namespace V.TowerDefense
 
         private void HealthSystem_HealthChangedEvent()
         {
-            Debug.Log(gameObject.name + HealthSystem.GetHealthAmount());
             if(HealthSystem.GetHealthAmount() <= 0)
             {
                 StartCoroutine(Coroutine_DisableGO());
             }
-
         }
         private IEnumerator Coroutine_DisableGO()
         {
+            if(_eMoveDir == EMoveDirection.Left)
+            {
+                GameEventManager.I.IncreaseMoney(_unitConfig.Level);
+            }
+
             yield return new WaitForEndOfFrame();
             gameObject.SetActive(false);
         }
