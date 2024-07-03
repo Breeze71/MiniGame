@@ -101,7 +101,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -175,8 +175,8 @@ MonoBehaviour:
   _unitConfig: {fileID: 11400000, guid: 4e9ba1f971cf77a4fa4da4895f20548c, type: 2}
   _groundCheck: {fileID: 2809171677773442472}
   _moveSpeed: 1
-  _disableMoveTimer: 1
-  _canMove: 1
+  _disableMoveTimer: 0.75
+  _canMove: 0
 --- !u!1 &2800449321102781309
 GameObject:
   m_ObjectHideFlags: 0

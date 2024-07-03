@@ -10,7 +10,8 @@ namespace V.TowerDefense
 {
     public abstract class UnitBase : MonoBehaviour
     {
-        public event Action<Collider2D, int> HitDamagableCollEvent;
+        public event Action<Collider2D, int> OnHitDamagableCollEvent;
+        public event Action OnHitEvent;
 
         public HealthSystem HealthSystem {get; private set;}
         [field : SerializeField] public EMoveDirection _eMoveDir{get; protected set;}
@@ -71,6 +72,11 @@ namespace V.TowerDefense
             _attackCDTimer.OnTimerDone -= AttackTimer_OnTimerDone;
             HealthSystem.HealthChangedEvent -= HealthSystem_HealthChangedEvent;
             
+            if(_disableMoveCoroutine != null)
+            {
+                StopCoroutine(_disableMoveCoroutine);
+            }
+            
             HealthSystem.ResetHealth();
         }
         #endregion
@@ -82,7 +88,11 @@ namespace V.TowerDefense
 
         protected void OnHitDamagableColl(Collider2D hitUnitColl, int damage)
         {
-            HitDamagableCollEvent?.Invoke(hitUnitColl, damage);
+            OnHitDamagableCollEvent?.Invoke(hitUnitColl, damage);
+        }
+        public void OnHit()
+        {
+            OnHitEvent?.Invoke();
         }
 
         #region Check
@@ -98,7 +108,7 @@ namespace V.TowerDefense
             {
                 StopCoroutine(_disableMoveCoroutine);
             }
-            StartCoroutine(Coroutine_DisableMovement());
+            _disableMoveCoroutine = StartCoroutine(Coroutine_DisableMovement());
         }
         private IEnumerator Coroutine_DisableMovement()
         {
@@ -131,7 +141,7 @@ namespace V.TowerDefense
         [Button]
         public void TestHit()
         {
-            HitDamagableCollEvent?.Invoke(gameObject.GetComponent<Collider2D>(), 15);
+            OnHitDamagableCollEvent?.Invoke(gameObject.GetComponent<Collider2D>(), 15);
         }
         
     }

@@ -9,8 +9,16 @@ namespace V.TowerDefense
     {
         [SerializeField] private Transform _firePoint;
 
+        private bool _isFirstShoot = true;
+
         private Coroutine _shootCoroutine;
 
+        protected override void Start()
+        {
+            base.Start();
+
+            _canAttack = false;
+        }
         protected override void Update() 
         {
             base.Update();
@@ -21,32 +29,32 @@ namespace V.TowerDefense
         // 射程之內
         private void HandleDamagableInRange()
         {
-            Vector3 sightdir = new Vector3((int)_eMoveDir, 0f, 0f);
-
+            Vector3 endPos;
+            Vector3 sightdir = new Vector2((int)_eMoveDir, 0f);
             RaycastHit2D hit2D = Physics2D.Raycast(_firePoint.position, sightdir,  _hitRangeConfig.Range, _unitConfig.DamagableLayer);
             if(hit2D)
             {
-                _canMove = false;
-                _canAttack = false;
-
-                _attackCDTimer.StartTimer();
-                Shoot(_firePoint.position, hit2D.point, hit2D);
-            }
-            else
-            {
-                _canMove = true;
+                endPos = hit2D.point;
+                Shoot(_firePoint.position, endPos, hit2D);
             }
         }
 
+        #region Shoot
         private void Shoot(Vector2 startPos, Vector3 endPos, RaycastHit2D hit2D)
-        {
-            if(!_canAttack) return;
-
-            if(_shootCoroutine != null)
+        {   
+            if(_isFirstShoot)
             {
-                StopCoroutine(_shootCoroutine);
+                _attackCDTimer.StartTimer();
+                _isFirstShoot = false;
             }
-            StartCoroutine(Coroutine_PlayTrail(startPos, endPos, hit2D));
+
+            if(_canAttack)
+            {
+                _canAttack = false;
+                _attackCDTimer.StartTimer();
+                StartDisableMove();
+                StartCoroutine(Coroutine_PlayTrail(startPos, endPos, hit2D));
+            }
         }
 
         private IEnumerator Coroutine_PlayTrail(Vector2 startPos, Vector3 endPos, RaycastHit2D hit)
@@ -68,7 +76,7 @@ namespace V.TowerDefense
 
                 yield return null;
             }
-            transform.transform.position = endPos;
+            trail.transform.position = endPos;
 
             // 視覺效果到了才 造成傷害跟彈孔
             if(hit.collider != null)
@@ -80,6 +88,7 @@ namespace V.TowerDefense
             yield return null;
             TrailPool.I.ReleaseTrail(trail);
         }
+        #endregion
 
         // test
         private void OnDrawGizmos() 
@@ -95,21 +104,25 @@ namespace V.TowerDefense
         [Button]
         private void TestHandleDamagableInRange()
         {
-            Vector3 sightdir = new Vector3((int)_eMoveDir, 0f, 0f);
+            // _canMove = false;
+            _canAttack = false;
+            _attackCDTimer.StartTimer();
+            _canAttack = true;
 
+            Vector3 endPos;
+            Vector3 sightdir = new Vector2((int)_eMoveDir, 0f);
             RaycastHit2D hit2D = Physics2D.Raycast(_firePoint.position, sightdir,  _hitRangeConfig.Range, _unitConfig.DamagableLayer);
             if(hit2D)
             {
-                _canMove = false;
-                _canAttack = false;
-
-                _attackCDTimer.StartTimer();
-                Shoot(_firePoint.position, hit2D.point, hit2D);
+                endPos = hit2D.point;
             }
             else
             {
-                _canMove = true;
+                endPos = (Vector2)_firePoint.position + (_moveDir * TrailPool.I.TrailConfig.MissDistance);
+
             }
+            Shoot(_firePoint.position, endPos, hit2D);
+            Debug.Log("test shoot");
         }
 
     }

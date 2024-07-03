@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace V.TowerDefense
 {
-    public class SoilderUI : MonoBehaviour
+    public class SoldierUI : MonoBehaviour
     {
         public event Action<SoldierBTNUI> SoilderBTNEvent;
 

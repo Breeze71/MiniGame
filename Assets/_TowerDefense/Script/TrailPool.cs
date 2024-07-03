@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -10,7 +11,7 @@ namespace V.TowerDefense
     {
         public static TrailPool I {get; private set;} 
 
-        [field : SerializeField] public ArcherTrailSO TrailConfig { get; private set;}
+        [Expandable]public ArcherTrailSO TrailConfig;
 
         private ObjectPool<TrailRenderer> _trailPool;
 

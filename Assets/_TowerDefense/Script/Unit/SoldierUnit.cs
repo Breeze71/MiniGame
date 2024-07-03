@@ -50,6 +50,7 @@ namespace V.TowerDefense
             {
                 OnHitDamagableColl(hitUnitColl, _unitConfig.Attack);
             
+                StartDisableMove();
                 _canAttack = false;
                 _attackCDTimer.StartTimer();
             }

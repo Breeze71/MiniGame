@@ -14,12 +14,14 @@ namespace V.TowerDefense
 
         private void OnEnable() 
         {
-            _unit.HitDamagableCollEvent += Unit_OnHitDamagableCollEvent;
+            _unit.OnHitDamagableCollEvent += Unit_OnHitDamagableCollEvent;
+            _unit.OnHitEvent += Unit_OnHitEvent;
         }
 
         private void OnDisable() 
         {
-            _unit.HitDamagableCollEvent -= Unit_OnHitDamagableCollEvent;
+            _unit.OnHitDamagableCollEvent -= Unit_OnHitDamagableCollEvent;
+            _unit.OnHitEvent -= Unit_OnHitEvent;
         }
 
         private void Unit_OnHitDamagableCollEvent(Collider2D coll, int damageAmount)
@@ -28,13 +30,16 @@ namespace V.TowerDefense
             
             if(hitUnit != null)
             {
-                hitUnit.StartDisableMove();
-
+                hitUnit.OnHit();
                 hitUnit.HealthSystem.TakeDamage(damageAmount);
-                
-                _squashAndStretch.PlaySquashAndStretch();
-                _flashControl.StartFlash();
             }
+        }
+
+        private void Unit_OnHitEvent()
+        {
+            _unit.StartDisableMove();
+            _squashAndStretch.PlaySquashAndStretch();
+            _flashControl.StartFlash();            
         }
 
         // knock back
