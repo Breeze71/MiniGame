@@ -25,7 +25,7 @@ namespace V.TowerDefense
         protected Vector2 _hitBoxOffest = Vector2.zero;
 
         // attack
-        protected Timer _attackTimer;
+        protected Timer _attackCDTimer;
         protected bool _canAttack = true;
 
         [SerializeField] private float _disableMoveTimer = .25f;
@@ -39,12 +39,12 @@ namespace V.TowerDefense
             _rb = GetComponent<Rigidbody2D>();
 
             HealthSystem = new HealthSystem(_unitConfig.Health);
-            _attackTimer = new Timer(_unitConfig.AttackTimerMax);
+            _attackCDTimer = new Timer(_unitConfig.AttackTimerMax);
         }
 
         private void OnEnable() 
         {
-            _attackTimer.OnTimerDone += AttackTimer_OnTimerDone;
+            _attackCDTimer.OnTimerDone += AttackTimer_OnTimerDone;
             HealthSystem.HealthChangedEvent += HealthSystem_HealthChangedEvent;
         }
 
@@ -63,12 +63,12 @@ namespace V.TowerDefense
 
         protected virtual void Update() 
         {
-            _attackTimer.Tick();
+            _attackCDTimer.Tick();
         }
 
         private void OnDisable() 
         {
-            _attackTimer.OnTimerDone -= AttackTimer_OnTimerDone;
+            _attackCDTimer.OnTimerDone -= AttackTimer_OnTimerDone;
             HealthSystem.HealthChangedEvent -= HealthSystem_HealthChangedEvent;
             
             HealthSystem.ResetHealth();

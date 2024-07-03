@@ -242,7 +242,7 @@ GameObject:
   m_IsActive: 0
 --- !u!4 &105313259
 Transform:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -1209,7 +1209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 3132916937388818926, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1243,6 +1243,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5285093939887325243, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_Size.x
+      value: 0.62393284
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285093939887325243, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_Size.y
+      value: 0.45846385
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285093939887325243, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0075211525
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285093939887325243, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.010028511
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572142905278598170, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f6265311ae6a7f45977329921f71f6f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2211,7 +2231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3132916937388818926, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3132916937388818926, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3217,7 +3237,7 @@ PrefabInstance:
     - target: {fileID: 2136097689488637594, guid: b88039e6fb17c714b96c3dc105bcc3dc, type: 3}
       propertyPath: soilderConfig
       value: 
-      objectReference: {fileID: 11400000, guid: 57aed36a343f4e2448e4d92b9f9d8916, type: 2}
+      objectReference: {fileID: 11400000, guid: 6b7d027c2d44b2146a0f77d2189e6e9a, type: 2}
     - target: {fileID: 7268450770535190745, guid: b88039e6fb17c714b96c3dc105bcc3dc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5084,6 +5104,51 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &1798228704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1798228705}
+  - component: {fileID: 1798228706}
+  m_Layer: 0
+  m_Name: ArcherTrailPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1798228705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798228704}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1798228706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798228704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e4050f54ad35f45a863f5467e2acd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TrailConfig>k__BackingField: {fileID: 11400000, guid: 4b5d54e5b07cc98418a932c09d517677, type: 2}
 --- !u!1001 &1800584672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6169,6 +6234,7 @@ SceneRoots:
   - {fileID: 2085960000}
   - {fileID: 411765868}
   - {fileID: 1671720830}
+  - {fileID: 1798228705}
   - {fileID: 864841978}
   - {fileID: 577245344}
   - {fileID: 1800584672}

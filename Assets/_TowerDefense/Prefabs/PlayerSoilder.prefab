@@ -175,7 +175,7 @@ MonoBehaviour:
   _unitConfig: {fileID: 11400000, guid: 57aed36a343f4e2448e4d92b9f9d8916, type: 2}
   _groundCheck: {fileID: 4577394936802596508}
   _moveSpeed: 1
-  _disableMoveTimer: 0.7
+  _disableMoveTimer: 1
   _canMove: 1
 --- !u!1 &4306082110112711933
 GameObject:
