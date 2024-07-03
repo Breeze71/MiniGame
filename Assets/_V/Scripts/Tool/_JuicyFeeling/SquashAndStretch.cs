@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace V.Tool.JuicyFeeling
@@ -9,9 +10,12 @@ namespace V.Tool.JuicyFeeling
         private static event Action onSquashAndStretchAll;
 
         [SerializeField] private Transform affectTransfrom;
+        [SerializeField] private List<Transform> affectTransforms;
         public SquashStretchSO so; 
 
         private Coroutine squashAndStretchCoroutine;
+        private Coroutine squashAndStretchAllCoroutine;
+
         private Vector3 originScaleVector;
 
         private bool isReverse;
@@ -78,6 +82,15 @@ namespace V.Tool.JuicyFeeling
             }
 
             StartSquashAndStretch();            
+        }
+        public void PlaySquashAndStretchAll()
+        {
+            if (so.CanLoop && !so.CanOverwritten) 
+            {
+                return;
+            }
+
+            StartSquashAndStretchAll();
         }
 
         private void StartSquashAndStretch()
@@ -203,5 +216,104 @@ namespace V.Tool.JuicyFeeling
             return _modifiedScale;
         }
         #endregion
+
+
+        private void StartSquashAndStretchAll()
+        {
+            if(so.AxisToAffect == SquashStretchAxis.None)
+            {
+                Debug.Log("No Affect Vector");
+                return;
+            }
+
+            if(squashAndStretchCoroutine != null)
+            {
+                StopCoroutine(squashAndStretchCoroutine);
+
+                if(so.CanPlayEveryTime && so.ResetScaleOrNot)
+                {
+                    foreach(Transform t in affectTransforms)
+                    {
+                        t.localScale = originScaleVector;
+                    }
+                }
+            }
+            squashAndStretchCoroutine = StartCoroutine(Coroutine_SquashStretchAll());
+        }
+
+        private IEnumerator Coroutine_SquashStretchAll()
+        {
+            WaitForSeconds _loopingDelay = new WaitForSeconds(so.LoopingDelay);
+
+            do
+            {   
+                // 依照機率播放
+                if(!so.CanPlayEveryTime)
+                {
+                    if(UnityEngine.Random.Range(0f, 100f) > so.PlayPercentage)
+                    {
+                        yield return null;
+                        continue;
+                    }
+                }
+
+                if(so.CanReverseAfterPlaying)
+                {
+                    isReverse = !isReverse;
+                }
+
+                float _elapsedTimer = 0;
+                Vector3 _originScale = originScaleVector;
+                Vector3 _modifiedScale = _originScale;
+
+                while (_elapsedTimer < so.Duration)
+                {
+                    _elapsedTimer += Time.deltaTime;
+                    
+                    // Curve Postion
+                    float _curvePosition;
+
+                    // 判斷是否要依照 Curve 擠壓或膨脹
+                    if(isReverse)
+                    {
+                        _curvePosition = 1 - (_elapsedTimer / so.Duration);
+                    }
+                    else
+                    {
+                        _curvePosition = _elapsedTimer / so.Duration;
+                    }
+
+                    // Curve Value
+                    float _curveValue = so.SquashStretchCurve.Evaluate(_curvePosition);
+                    float _remapValue = so.OriginScale + (_curveValue * (so.MaxScale - so.OriginScale));    // 確保大小介於 Origin Scale and MaxScale
+
+                    float _miniumThreshold = .0001f;
+                    if(Mathf.Abs(_remapValue) < _miniumThreshold)
+                    {
+                        _remapValue = _miniumThreshold;
+                        Debug.Log("Minimun");
+                    }
+
+                    _modifiedScale = CheckModifiedVector(_modifiedScale, _originScale, _remapValue);
+                    
+                    foreach(Transform t in affectTransforms)
+                    {
+                        t.localScale = _modifiedScale;
+                    }
+
+                    yield return null;
+                }
+
+                if(so.ResetScaleOrNot)
+                {
+                    affectTransfrom.localScale = _originScale;
+                }
+
+                if(so.CanLoop)
+                {
+                    yield return _loopingDelay;
+                }
+            }while(so.CanLoop);
+        }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace V.TowerDefense
 {
     public class SoldierUnit : UnitBase
-    {                
+    {
         protected override void Update() 
         {
             base.Update();
@@ -48,7 +48,7 @@ namespace V.TowerDefense
             hitUnitColl = Physics2D.OverlapBox(_hitBoxOffest, _hitRangeConfig.HitBox.size, 0f, _unitConfig.DamagableLayer);
             if(hitUnitColl != null)
             {
-                OnHitDamagableColl(hitUnitColl, _unitConfig.Attack);
+                OnHitDamagableColl(hitUnitColl, _unitConfig.CurrentAttack);
             
                 StartDisableMove();
                 _canAttack = false;

@@ -10,10 +10,12 @@ namespace V.TowerDefense
     {
         public static GameEventManager I {get; private set;}
 
-        public event Action<SoldierBTNUI> OnMoneyEnoughEvent;
+        public event Action<MenuBTNBase> OnMoneyEnoughEvent;
         public event Action<int> OnMoneyChangedEvent;
+        public event Action OnUpgrade;
 
         private int CoinAmount = 100; 
+        private int currentCost = 1;
 
         #region LC
         private void Awake() 
@@ -27,11 +29,33 @@ namespace V.TowerDefense
         }
         #endregion
 
-        #region Money Change
-        public void CostMoney(SoldierBTNUI buttonUI)
+        public void IncreaseMoney(int amount)
         {
-            int cost = buttonUI.soilderConfig.Cost;
+            CoinAmount += amount;
+            OnMoneyChangedEvent?.Invoke(CoinAmount);
+        }
 
+        // summon unit
+        public void SummonUnit(MenuBTNBase buttonUI)
+        {
+            int cost = buttonUI.SoilderConfig.SummonCost;
+
+            CostMoney(buttonUI, cost);
+        }
+
+        // upgrade unit
+        public void UpgradeUnit(MenuBTNBase buttonUI)
+        {
+            CostMoney(buttonUI, currentCost);
+            
+            currentCost = (int)Mathf.Round(buttonUI.SoilderConfig.CurrentLevel * 
+                    (1 + buttonUI.SoilderConfig.UpgradeMultiplierPerPurchase));
+
+            OnUpgrade?.Invoke();
+        }
+
+        private void CostMoney(MenuBTNBase buttonUI, int cost)
+        {
             if(CoinAmount >= cost)
             {
                 CoinAmount -= cost;
@@ -41,15 +65,7 @@ namespace V.TowerDefense
             else
             {
                 Debug.LogWarning("Money Not Enough");
-            }
+            }            
         }
-
-        public void IncreaseMoney(int amount)
-        {
-            CoinAmount += amount;
-            OnMoneyChangedEvent?.Invoke(CoinAmount);
-        }
-
-        #endregion
     }
 }

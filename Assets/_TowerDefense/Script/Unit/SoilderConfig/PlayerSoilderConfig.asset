@@ -10,13 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 571f97d2ba8e24447904513bfcc73618, type: 3}
-  m_Name: SoilderConfig
+  m_Name: PlayerSoilderConfig
   m_EditorClassIdentifier: 
   soilderPrefabs: {fileID: 817724188411529885, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-  <Attack>k__BackingField: 15
-  <Health>k__BackingField: 100
-  <AttackTimerMax>k__BackingField: 0.25
-  <DamagableLayer>k__BackingField:
+  Level: 1
+  Attack: 15
+  Health: 100
+  AttackTimerMax: 0.25
+  DamagableLayer:
     serializedVersion: 2
     m_Bits: 512
-  <Cost>k__BackingField: 5
+  SummonCost: 5
+  UpgradeMultiplier: 0.2
+  UpgradeMultiplierPerPurchase: 0.5
+  CurrentLevel: 1
+  CurrentAttack: 15
+  CurrentHealth: 100

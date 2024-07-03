@@ -13,10 +13,16 @@ MonoBehaviour:
   m_Name: EnemySoilderConfig
   m_EditorClassIdentifier: 
   soilderPrefabs: {fileID: 817724188411529885, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-  <Attack>k__BackingField: 15
-  <Health>k__BackingField: 100
-  <AttackTimerMax>k__BackingField: 0.25
-  <DamagableLayer>k__BackingField:
+  Level: 1
+  Attack: 15
+  Health: 100
+  AttackTimerMax: 0.25
+  DamagableLayer:
     serializedVersion: 2
     m_Bits: 256
-  <Cost>k__BackingField: 5
+  SummonCost: 5
+  UpgradeMultiplier: 0.2
+  UpgradeMultiplierPerPurchase: 0.5
+  CurrentLevel: 1
+  CurrentAttack: 15
+  CurrentHealth: 100

@@ -21,16 +21,16 @@ namespace V.TowerDefense
             GameEventManager.I.OnMoneyEnoughEvent -= GameEventManager_I_OnMoneyEnoughEvent;
         }
 
-        private void SoilderUI_SoilderBTNEvent(SoldierBTNUI bTNUI)
+        private void SoilderUI_SoilderBTNEvent(MenuBTNBase bTNUI)
         {
             // cost money
-            GameEventManager.I.CostMoney(bTNUI);
+            GameEventManager.I.SummonUnit(bTNUI);
         }
 
-        private void GameEventManager_I_OnMoneyEnoughEvent(SoldierBTNUI bTNUI)
+        private void GameEventManager_I_OnMoneyEnoughEvent(MenuBTNBase bTNUI)
         {
             // spawn soilder
-            _soilderSpawner.SpawnSoilder(bTNUI.soilderConfig.soilderPrefabs);
+            _soilderSpawner.SpawnSoilder(bTNUI.SoilderConfig.soilderPrefabs);
         }
     }
 }

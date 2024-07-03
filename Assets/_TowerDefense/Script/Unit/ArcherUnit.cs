@@ -81,7 +81,7 @@ namespace V.TowerDefense
             // 視覺效果到了才 造成傷害跟彈孔
             if(hit.collider != null)
             {
-                OnHitDamagableColl(hit.collider, _unitConfig.Attack);
+                OnHitDamagableColl(hit.collider, _unitConfig.CurrentAttack);
             }
 
             yield return new WaitForSeconds(TrailPool.I.TrailConfig.Duration);

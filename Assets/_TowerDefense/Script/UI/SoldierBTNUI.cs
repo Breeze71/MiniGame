@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
@@ -7,12 +8,11 @@ using UnityEngine.UI;
 
 namespace V.TowerDefense
 {
-    public class SoldierBTNUI : MonoBehaviour
+    public class SoldierBTNUI : MenuBTNBase
     {
         // health display
         // atk dis
         // soilder so
-        [Expandable] public UnitSO soilderConfig;
         [field : SerializeField] public Button Button {get; private set;}
 
         [SerializeField] private TextMeshProUGUI _attackTEXT;
@@ -21,19 +21,51 @@ namespace V.TowerDefense
         private void Awake() 
         {
             Button = GetComponentInChildren<Button>();    
+
+            if(SoilderConfig != null)
+            {
+                SoilderConfig.ResetUnitSO();
+            }
         }
 
-        private void Start() 
+        private void OnEnable() 
+        { 
+            UpdateSoldierUI();
+        }
+
+        protected override void Start() 
         {
+            base.Start();
+            
             UpdateSoldierUI();    
+        }
+
+        private void OnDisable() 
+        {
+            UpdateSoldierUI();
+        }
+
+        private void OnDestroy() 
+        {
+            if(SoilderConfig != null)
+            {
+                SoilderConfig.ResetUnitSO();
+            }             
+        }
+
+        private void OnUpgrade()
+        {
+            UpdateSoldierUI();
         }
 
         public void UpdateSoldierUI()
         {
-            if(soilderConfig != null)
+            if(SoilderConfig != null)
             {
-                _attackTEXT.text = soilderConfig.Attack.ToString();
-                _healthTEXT.text = soilderConfig.Health.ToString();
+                Debug.Log("update soilder ui");
+
+                _attackTEXT.text = SoilderConfig.CurrentAttack.ToString();
+                _healthTEXT.text = SoilderConfig.CurrentHealth.ToString();
             }
             else
             {

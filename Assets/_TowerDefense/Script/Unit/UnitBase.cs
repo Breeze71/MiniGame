@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
+using System.Dynamic;
 using NaughtyAttributes;
 using UnityEngine;
 using Timer = V.Utilities.Timer;
+
 
 namespace V.TowerDefense
 {
@@ -15,9 +15,9 @@ namespace V.TowerDefense
 
         public HealthSystem HealthSystem {get; private set;}
         [field : SerializeField] public EMoveDirection _eMoveDir{get; protected set;}
+        [Expandable] [SerializeField] protected UnitSO _unitConfig;
 
         [Expandable][SerializeField] protected HitRangeSO _hitRangeConfig;
-        [Expandable] [SerializeField] protected UnitSO _unitConfig;
         [SerializeField] private BoxCheck _groundCheck;
         [SerializeField] private float _moveSpeed;
 
@@ -35,11 +35,11 @@ namespace V.TowerDefense
 
 
         #region LC
-        private void Awake() 
+        protected virtual void Awake() 
         {
             _rb = GetComponent<Rigidbody2D>();
 
-            HealthSystem = new HealthSystem(_unitConfig.Health);
+            HealthSystem = new HealthSystem(_unitConfig.CurrentHealth);
             _attackCDTimer = new Timer(_unitConfig.AttackTimerMax);
         }
 
@@ -128,7 +128,7 @@ namespace V.TowerDefense
         {
             if(_eMoveDir == EMoveDirection.Left)
             {
-                GameEventManager.I.IncreaseMoney(_unitConfig.Level);
+                GameEventManager.I.IncreaseMoney(_unitConfig.CurrentLevel);
             }
 
             yield return new WaitForEndOfFrame();
