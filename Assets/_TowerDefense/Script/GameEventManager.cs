@@ -10,9 +10,9 @@ namespace V.TowerDefense
     {
         public static GameEventManager I {get; private set;}
 
-        public event Action<MenuBTNBase> OnMoneyEnoughEvent;
+        public event Action<SoldierBTNUI> OnSummonUnitEvent;
+        public event Action<UpgradeBTNUI> OnUpgradeEvent;
         public event Action<int> OnMoneyChangedEvent;
-        public event Action OnUpgrade;
 
         private int CoinAmount = 100; 
         private int currentCost = 1;
@@ -36,22 +36,23 @@ namespace V.TowerDefense
         }
 
         // summon unit
-        public void SummonUnit(MenuBTNBase buttonUI)
+        public void SummonUnit(SoldierBTNUI buttonUI)
         {
             int cost = buttonUI.SoilderConfig.SummonCost;
 
             CostMoney(buttonUI, cost);
+            OnSummonUnitEvent?.Invoke(buttonUI);
         }
 
         // upgrade unit
-        public void UpgradeUnit(MenuBTNBase buttonUI)
+        public void UpgradeUnit(UpgradeBTNUI buttonUI)
         {
             CostMoney(buttonUI, currentCost);
             
             currentCost = (int)Mathf.Round(buttonUI.SoilderConfig.CurrentLevel * 
                     (1 + buttonUI.SoilderConfig.UpgradeMultiplierPerPurchase));
 
-            OnUpgrade?.Invoke();
+            OnUpgradeEvent?.Invoke(buttonUI);
         }
 
         private void CostMoney(MenuBTNBase buttonUI, int cost)
@@ -59,7 +60,6 @@ namespace V.TowerDefense
             if(CoinAmount >= cost)
             {
                 CoinAmount -= cost;
-                OnMoneyEnoughEvent?.Invoke(buttonUI);
                 OnMoneyChangedEvent?.Invoke(CoinAmount);
             }
             else

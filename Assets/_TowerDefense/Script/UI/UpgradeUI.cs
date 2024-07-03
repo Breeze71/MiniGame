@@ -23,6 +23,7 @@ namespace V.TowerDefense
                 upgradeBTN.Button.onClick.AddListener(() =>
                 {
                     UpgradeBTNEvent?.Invoke(upgradeBTN);
+                    Debug.Log("Click" + upgradeBTN.name);
                 });
             }
         }

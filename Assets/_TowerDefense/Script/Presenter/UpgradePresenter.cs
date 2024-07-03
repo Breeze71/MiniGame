@@ -13,7 +13,7 @@ namespace V.TowerDefense
         private void OnEnable() 
         {
             _upgradeUI.UpgradeBTNEvent += UpgradeUI_UpgradeBTN;
-            GameEventManager.I.OnMoneyEnoughEvent += GameEventManager_I_OnUpgradeCostChangedEvent;
+            GameEventManager.I.OnUpgradeEvent += GameEventManager_I_OnUpgrade;
         }
 
         private void OnDisable() 
@@ -26,19 +26,18 @@ namespace V.TowerDefense
             GameEventManager.I.UpgradeUnit(bTNUI);
         }
 
-        private void GameEventManager_I_OnUpgradeCostChangedEvent(MenuBTNBase bTNBase)
+        private void GameEventManager_I_OnUpgrade(UpgradeBTNUI bTNBase)
         {
-            UpgradeBTNUI upgradeBTNUI = bTNBase.GetComponent<UpgradeBTNUI>();
 
-            if(upgradeBTNUI == null)    return;
+            if(bTNBase == null)    return;
 
             _unitUpgrade.UpgradeUnit(bTNBase.SoilderConfig); // up
 
-            upgradeBTNUI.UpdateUpgradeBTNUI(bTNBase.SoilderConfig); // ui
+            bTNBase.UpdateUpgradeBTNUI(bTNBase.SoilderConfig); // ui
 
             int atkUp = _unitUpgrade.NextUpgradeValue(bTNBase.SoilderConfig.CurrentAttack, bTNBase.SoilderConfig.UpgradeMultiplier);
             int hpUp = _unitUpgrade.NextUpgradeValue(bTNBase.SoilderConfig.CurrentHealth, bTNBase.SoilderConfig.UpgradeMultiplier);
-            upgradeBTNUI.UpdateUpgradeUpValue(atkUp, hpUp); // ui
+            bTNBase.UpdateUpgradeUpValue(atkUp, hpUp); // ui
         }
 
     }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace V.TowerDefense
 {
@@ -19,8 +18,9 @@ namespace V.TowerDefense
         [SerializeField] private Wave[] waveList;
 
         private EWaveState _eWaveState;
-        private int currentWaveIndex;
+        [SerializeField] [NaughtyAttributes.ReadOnly] private int currentWaveIndex;
         private float waveCountDown;
+        [SerializeField] private bool isTesting;
 
         private void Start() 
         {
@@ -53,6 +53,17 @@ namespace V.TowerDefense
             else
             {
                 _eWaveState = EWaveState.End;
+
+                ResetWave();
+            }
+        }
+
+        private void ResetWave()
+        {
+            if(isTesting)
+            {
+                currentWaveIndex = 0;
+                _eWaveState = EWaveState.Start;
             }
         }
     }

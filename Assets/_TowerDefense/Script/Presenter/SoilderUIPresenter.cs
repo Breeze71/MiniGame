@@ -13,15 +13,15 @@ namespace V.TowerDefense
         private void OnEnable() 
         {
             _soilderUI.SoilderBTNEvent += SoilderUI_SoilderBTNEvent;
-            GameEventManager.I.OnMoneyEnoughEvent += GameEventManager_I_OnMoneyEnoughEvent;
+            GameEventManager.I.OnSummonUnitEvent += GameEventManager_I_OnMoneyEnoughEvent;
         }
         private void OnDisable() 
         {
             _soilderUI.SoilderBTNEvent -= SoilderUI_SoilderBTNEvent;
-            GameEventManager.I.OnMoneyEnoughEvent -= GameEventManager_I_OnMoneyEnoughEvent;
+            GameEventManager.I.OnSummonUnitEvent -= GameEventManager_I_OnMoneyEnoughEvent;
         }
 
-        private void SoilderUI_SoilderBTNEvent(MenuBTNBase bTNUI)
+        private void SoilderUI_SoilderBTNEvent(SoldierBTNUI bTNUI)
         {
             // cost money
             GameEventManager.I.SummonUnit(bTNUI);

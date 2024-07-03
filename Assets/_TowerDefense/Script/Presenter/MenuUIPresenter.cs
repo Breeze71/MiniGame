@@ -18,6 +18,7 @@ namespace V.TowerDefense
         #region LC
         private void Awake() 
         {
+            OpenAllMenu();
             _menus.Add(_soilderMenu);
             _menus.Add(_upgradeMenu);
             _menus.Add(_storeMenu);
@@ -67,6 +68,14 @@ namespace V.TowerDefense
                 CloseAllMenu();
                 menu.SetActive(true);
             }
+        }
+
+        private void OpenAllMenu()
+        {
+            foreach(GameObject menu in _menus)
+            {
+                menu.SetActive(true);
+            }           
         }
 
         private void CloseAllMenu()

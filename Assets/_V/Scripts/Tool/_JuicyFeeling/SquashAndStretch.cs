@@ -10,8 +10,8 @@ namespace V.Tool.JuicyFeeling
         private static event Action onSquashAndStretchAll;
 
         [SerializeField] private Transform affectTransfrom;
-        [SerializeField] private List<Transform> affectTransforms;
-        public SquashStretchSO so; 
+        // [SerializeField] private List<Transform> affectTransforms;
+        public SquashStretchSO config;
 
         private Coroutine squashAndStretchCoroutine;
         private Coroutine squashAndStretchAllCoroutine;
@@ -21,9 +21,9 @@ namespace V.Tool.JuicyFeeling
         private bool isReverse;
 
         // Flag 是否有選擇
-        private bool affectX => (so.AxisToAffect & SquashStretchAxis.X) != 0;
-        private bool affectY => (so.AxisToAffect & SquashStretchAxis.Y) != 0;
-        private bool affectZ => (so.AxisToAffect & SquashStretchAxis.Z) != 0;
+        private bool affectX => (config.AxisToAffect & SquashStretchAxis.X) != 0;
+        private bool affectY => (config.AxisToAffect & SquashStretchAxis.Y) != 0;
+        private bool affectZ => (config.AxisToAffect & SquashStretchAxis.Z) != 0;
         
         public static void SquashAndStretchAll()
         {
@@ -43,10 +43,10 @@ namespace V.Tool.JuicyFeeling
 
         private void Start() 
         {
-            if(so.PlayOnStart)
+            if(config.PlayOnStart)
             {
                 StartSquashAndStretch();
-            }    
+            }
         }
 
         private void OnEnable() 
@@ -67,7 +67,7 @@ namespace V.Tool.JuicyFeeling
         #region Squash And Stretch
         public void PlaySquashAndStretch()
         {
-            if (so.CanLoop && !so.CanOverwritten) 
+            if (config.CanLoop && !config.CanOverwritten) 
             {
                 return;
             }
@@ -76,7 +76,7 @@ namespace V.Tool.JuicyFeeling
         }
         public void PlaySquashAndStretch(SquashStretchSO _SquashStretchSO)
         {
-            if (so.CanLoop && !so.CanOverwritten) 
+            if (config.CanLoop && !config.CanOverwritten) 
             {
                 return;
             }
@@ -85,7 +85,7 @@ namespace V.Tool.JuicyFeeling
         }
         public void PlaySquashAndStretchAll()
         {
-            if (so.CanLoop && !so.CanOverwritten) 
+            if (config.CanLoop && !config.CanOverwritten) 
             {
                 return;
             }
@@ -95,7 +95,7 @@ namespace V.Tool.JuicyFeeling
 
         private void StartSquashAndStretch()
         {
-            if(so.AxisToAffect == SquashStretchAxis.None)
+            if(config.AxisToAffect == SquashStretchAxis.None)
             {
                 Debug.Log("No Affect Vector");
                 return;
@@ -105,7 +105,7 @@ namespace V.Tool.JuicyFeeling
             {
                 StopCoroutine(squashAndStretchCoroutine);
 
-                if(so.CanPlayEveryTime && so.ResetScaleOrNot)
+                if(config.CanPlayEveryTime && config.ResetScaleOrNot)
                 {
                     affectTransfrom.localScale = originScaleVector;
                 }
@@ -115,21 +115,21 @@ namespace V.Tool.JuicyFeeling
 
         private IEnumerator Coroutine_SquashStretch()
         {
-            WaitForSeconds _loopingDelay = new WaitForSeconds(so.LoopingDelay);
+            WaitForSeconds _loopingDelay = new WaitForSeconds(config.LoopingDelay);
 
             do
             {   
                 // 依照機率播放
-                if(!so.CanPlayEveryTime)
+                if(!config.CanPlayEveryTime)
                 {
-                    if(UnityEngine.Random.Range(0f, 100f) > so.PlayPercentage)
+                    if(UnityEngine.Random.Range(0f, 100f) > config.PlayPercentage)
                     {
                         yield return null;
                         continue;
                     }
                 }
 
-                if(so.CanReverseAfterPlaying)
+                if(config.CanReverseAfterPlaying)
                 {
                     isReverse = !isReverse;
                 }
@@ -138,7 +138,7 @@ namespace V.Tool.JuicyFeeling
                 Vector3 _originScale = originScaleVector;
                 Vector3 _modifiedScale = _originScale;
 
-                while (_elapsedTimer < so.Duration)
+                while (_elapsedTimer < config.Duration)
                 {
                     _elapsedTimer += Time.deltaTime;
                     
@@ -148,16 +148,16 @@ namespace V.Tool.JuicyFeeling
                     // 判斷是否要依照 Curve 擠壓或膨脹
                     if(isReverse)
                     {
-                        _curvePosition = 1 - (_elapsedTimer / so.Duration);
+                        _curvePosition = 1 - (_elapsedTimer / config.Duration);
                     }
                     else
                     {
-                        _curvePosition = _elapsedTimer / so.Duration;
+                        _curvePosition = _elapsedTimer / config.Duration;
                     }
 
                     // Curve Value
-                    float _curveValue = so.SquashStretchCurve.Evaluate(_curvePosition);
-                    float _remapValue = so.OriginScale + (_curveValue * (so.MaxScale - so.OriginScale));    // 確保大小介於 Origin Scale and MaxScale
+                    float _curveValue = config.SquashStretchCurve.Evaluate(_curvePosition);
+                    float _remapValue = config.OriginScale + (_curveValue * (config.MaxScale - config.OriginScale));    // 確保大小介於 Origin Scale and MaxScale
 
                     float _miniumThreshold = .0001f;
                     if(Mathf.Abs(_remapValue) < _miniumThreshold)
@@ -172,16 +172,16 @@ namespace V.Tool.JuicyFeeling
                     yield return null;
                 }
 
-                if(so.ResetScaleOrNot)
+                if(config.ResetScaleOrNot)
                 {
                     affectTransfrom.localScale = _originScale;
                 }
 
-                if(so.CanLoop)
+                if(config.CanLoop)
                 {
                     yield return _loopingDelay;
                 }
-            }while(so.CanLoop);
+            }while(config.CanLoop);
         }
     
         private Vector3 CheckModifiedVector(Vector3 _modifiedScale, Vector3 _originScale, float _remapValue)
@@ -220,7 +220,7 @@ namespace V.Tool.JuicyFeeling
 
         private void StartSquashAndStretchAll()
         {
-            if(so.AxisToAffect == SquashStretchAxis.None)
+            if(config.AxisToAffect == SquashStretchAxis.None)
             {
                 Debug.Log("No Affect Vector");
                 return;
@@ -230,12 +230,11 @@ namespace V.Tool.JuicyFeeling
             {
                 StopCoroutine(squashAndStretchCoroutine);
 
-                if(so.CanPlayEveryTime && so.ResetScaleOrNot)
+                if(config.CanPlayEveryTime && config.ResetScaleOrNot)
                 {
-                    foreach(Transform t in affectTransforms)
-                    {
-                        t.localScale = originScaleVector;
-                    }
+
+                    affectTransfrom.localScale = originScaleVector;
+
                 }
             }
             squashAndStretchCoroutine = StartCoroutine(Coroutine_SquashStretchAll());
@@ -243,21 +242,21 @@ namespace V.Tool.JuicyFeeling
 
         private IEnumerator Coroutine_SquashStretchAll()
         {
-            WaitForSeconds _loopingDelay = new WaitForSeconds(so.LoopingDelay);
+            WaitForSeconds _loopingDelay = new WaitForSeconds(config.LoopingDelay);
 
             do
             {   
                 // 依照機率播放
-                if(!so.CanPlayEveryTime)
+                if(!config.CanPlayEveryTime)
                 {
-                    if(UnityEngine.Random.Range(0f, 100f) > so.PlayPercentage)
+                    if(UnityEngine.Random.Range(0f, 100f) > config.PlayPercentage)
                     {
                         yield return null;
                         continue;
                     }
                 }
 
-                if(so.CanReverseAfterPlaying)
+                if(config.CanReverseAfterPlaying)
                 {
                     isReverse = !isReverse;
                 }
@@ -266,7 +265,7 @@ namespace V.Tool.JuicyFeeling
                 Vector3 _originScale = originScaleVector;
                 Vector3 _modifiedScale = _originScale;
 
-                while (_elapsedTimer < so.Duration)
+                while (_elapsedTimer < config.Duration)
                 {
                     _elapsedTimer += Time.deltaTime;
                     
@@ -276,16 +275,16 @@ namespace V.Tool.JuicyFeeling
                     // 判斷是否要依照 Curve 擠壓或膨脹
                     if(isReverse)
                     {
-                        _curvePosition = 1 - (_elapsedTimer / so.Duration);
+                        _curvePosition = 1 - (_elapsedTimer / config.Duration);
                     }
                     else
                     {
-                        _curvePosition = _elapsedTimer / so.Duration;
+                        _curvePosition = _elapsedTimer / config.Duration;
                     }
 
                     // Curve Value
-                    float _curveValue = so.SquashStretchCurve.Evaluate(_curvePosition);
-                    float _remapValue = so.OriginScale + (_curveValue * (so.MaxScale - so.OriginScale));    // 確保大小介於 Origin Scale and MaxScale
+                    float _curveValue = config.SquashStretchCurve.Evaluate(_curvePosition);
+                    float _remapValue = config.OriginScale + (_curveValue * (config.MaxScale - config.OriginScale));    // 確保大小介於 Origin Scale and MaxScale
 
                     float _miniumThreshold = .0001f;
                     if(Mathf.Abs(_remapValue) < _miniumThreshold)
@@ -296,24 +295,22 @@ namespace V.Tool.JuicyFeeling
 
                     _modifiedScale = CheckModifiedVector(_modifiedScale, _originScale, _remapValue);
                     
-                    foreach(Transform t in affectTransforms)
-                    {
-                        t.localScale = _modifiedScale;
-                    }
+                    affectTransfrom.localScale = _modifiedScale;
+
 
                     yield return null;
                 }
 
-                if(so.ResetScaleOrNot)
+                if(config.ResetScaleOrNot)
                 {
                     affectTransfrom.localScale = _originScale;
                 }
 
-                if(so.CanLoop)
+                if(config.CanLoop)
                 {
                     yield return _loopingDelay;
                 }
-            }while(so.CanLoop);
+            }while(config.CanLoop);
         }
     }
 }

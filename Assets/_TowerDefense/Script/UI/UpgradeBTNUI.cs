@@ -15,6 +15,8 @@ namespace V.TowerDefense
         // soilder so
         [field : SerializeField] public Button Button {get; private set;}
 
+        [SerializeField] private UnitUpgrade _unitUpgrade;
+
         [SerializeField] private TextMeshProUGUI _upgradeCostTEXT;
 
         [SerializeField] private TextMeshProUGUI _attackTEXT;
@@ -22,6 +24,7 @@ namespace V.TowerDefense
         [SerializeField] private TextMeshProUGUI _healthTEXT;
         [SerializeField] private TextMeshProUGUI _healthUpTEXT;
         
+        #region LC
         private void Awake() 
         {
             Button = GetComponentInChildren<Button>();    
@@ -36,27 +39,32 @@ namespace V.TowerDefense
         {
             UpdateUpgradeBTNUI(SoilderConfig); 
         }
+        #endregion
 
         private void UpdateUpgradeCost(int value)
         {
-            _upgradeCostTEXT.text = value.ToString();
+            NumDisplay(value, _upgradeCostTEXT);
         }
         private void UpdateUpgradeValue()
         {
-            _attackTEXT.text = SoilderConfig.CurrentAttack.ToString();
-            _healthTEXT.text = SoilderConfig.CurrentHealth.ToString();
+            NumDisplay(SoilderConfig.CurrentAttack, _attackTEXT);
+            NumDisplay(SoilderConfig.CurrentHealth, _healthTEXT);
         }
 
         public void UpdateUpgradeUpValue(int atkUp, int healthUp)
         {
-            _attackUpTEXT.text = "+" + atkUp.ToString();
-            _healthUpTEXT.text = "+" + healthUp.ToString();
+            NumDisplay(atkUp, _attackUpTEXT, "+");
+            NumDisplay(healthUp, _healthUpTEXT, "+");
         }
 
         public void UpdateUpgradeBTNUI(UnitSO unitSO)
         {
             if(SoilderConfig != null)
             {
+                int atkUp = _unitUpgrade.NextUpgradeValue(SoilderConfig.CurrentAttack, SoilderConfig.UpgradeMultiplier);
+                int hpUp = _unitUpgrade.NextUpgradeValue(SoilderConfig.CurrentHealth, SoilderConfig.UpgradeMultiplier);
+                UpdateUpgradeUpValue(atkUp, hpUp);
+
                 UpdateUpgradeValue();
                 UpdateUpgradeCost(unitSO.CurrentLevel);
             }
@@ -71,5 +79,6 @@ namespace V.TowerDefense
                 _healthUpTEXT.enabled = false;
             }
         }
+    
     }
 }

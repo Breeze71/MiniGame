@@ -172,11 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_eMoveDir>k__BackingField: 1
-  _hitRangeConfig: {fileID: 11400000, guid: c00f1e95695ddf94088b24ac0b912001, type: 2}
   _unitConfig: {fileID: 11400000, guid: 6b7d027c2d44b2146a0f77d2189e6e9a, type: 2}
+  _hitRangeConfig: {fileID: 11400000, guid: c00f1e95695ddf94088b24ac0b912001, type: 2}
   _groundCheck: {fileID: 4577394936802596508}
   _moveSpeed: 1
-  _disableMoveTimer: 0.75
+  _disableMoveTimer: 0.25
   _canMove: 1
   _firePoint: {fileID: 2170115366410686357}
 --- !u!1 &4306082110112711933
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectTransfrom: {fileID: 0}
-  so: {fileID: 11400000, guid: e936550ef94e560448a6f2c472780063, type: 2}
+  config: {fileID: 11400000, guid: e936550ef94e560448a6f2c472780063, type: 2}
 --- !u!114 &6907865134283953331
 MonoBehaviour:
   m_ObjectHideFlags: 0

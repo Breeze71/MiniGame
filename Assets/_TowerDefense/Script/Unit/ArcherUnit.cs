@@ -34,8 +34,14 @@ namespace V.TowerDefense
             RaycastHit2D hit2D = Physics2D.Raycast(_firePoint.position, sightdir,  _hitRangeConfig.Range, _unitConfig.DamagableLayer);
             if(hit2D)
             {
+                _canMove = false;
+
                 endPos = hit2D.point;
                 Shoot(_firePoint.position, endPos, hit2D);
+            }
+            else
+            {
+                _canMove = true;
             }
         }
 

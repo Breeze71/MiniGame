@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soilderPrefabs: {fileID: 817724188411529885, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
   Level: 1
-  Attack: 15
+  Attack: 3
   Health: 100
   AttackTimerMax: 0.25
   DamagableLayer:

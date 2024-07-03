@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soilderPrefabs: {fileID: 817724188411529885, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
   Level: 1
-  Attack: 8
-  Health: 100
-  AttackTimerMax: 0.25
+  Attack: 5
+  Health: 50
+  AttackTimerMax: 0.5
   DamagableLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -24,5 +24,5 @@ MonoBehaviour:
   UpgradeMultiplier: 0.2
   UpgradeMultiplierPerPurchase: 0.5
   CurrentLevel: 1
-  CurrentAttack: 8
-  CurrentHealth: 100
+  CurrentAttack: 5
+  CurrentHealth: 50

@@ -64,8 +64,8 @@ namespace V.TowerDefense
             {
                 Debug.Log("update soilder ui");
 
-                _attackTEXT.text = SoilderConfig.CurrentAttack.ToString();
-                _healthTEXT.text = SoilderConfig.CurrentHealth.ToString();
+                NumDisplay(SoilderConfig.CurrentAttack, _attackTEXT);
+                NumDisplay(SoilderConfig.CurrentHealth, _healthTEXT);
             }
             else
             {

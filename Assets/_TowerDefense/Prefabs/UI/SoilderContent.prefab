@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2becafc998b920c4098ea5b135429c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soilderConfig: {fileID: 11400000, guid: 57aed36a343f4e2448e4d92b9f9d8916, type: 2}
+  SoilderConfig: {fileID: 0}
   <Button>k__BackingField: {fileID: 0}
   _attackTEXT: {fileID: 8339141342993703674}
   _healthTEXT: {fileID: 8479277303842758985}
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectTransfrom: {fileID: 0}
-  so: {fileID: 11400000, guid: 4f0da607b9b1a33488b3b3e581c2aaf1, type: 2}
+  config: {fileID: 11400000, guid: e936550ef94e560448a6f2c472780063, type: 2}
 --- !u!114 &8418552556684504512
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,8 +7,6 @@ namespace V.TowerDefense
 {
     public class UnitUpgrade : MonoBehaviour
     {
-        // public int 
-
         public void UpgradeUnit(UnitSO unitSO)
         {
             unitSO.CurrentAttack = UpgradeValue(unitSO.CurrentAttack, unitSO.UpgradeMultiplier);

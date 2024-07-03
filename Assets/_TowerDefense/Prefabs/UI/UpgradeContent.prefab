@@ -619,13 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   affectTransfrom: {fileID: 0}
-  affectTransforms:
-  - {fileID: 8558820683026860311}
-  - {fileID: 8478149790664334970}
-  - {fileID: 7194189507318482677}
-  - {fileID: 9210747481914895097}
-  - {fileID: 4894716252759937036}
-  so: {fileID: 11400000, guid: 4f0da607b9b1a33488b3b3e581c2aaf1, type: 2}
+  config: {fileID: 11400000, guid: 4f0da607b9b1a33488b3b3e581c2aaf1, type: 2}
 --- !u!114 &7128782524979016219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4a6d2646fe45b419ab47001446b2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soilderConfig: {fileID: 11400000, guid: 57aed36a343f4e2448e4d92b9f9d8916, type: 2}
+  SoilderConfig: {fileID: 0}
   <Button>k__BackingField: {fileID: 5000116313488078702}
   _upgradeCostTEXT: {fileID: 8025709282386506231}
   _attackTEXT: {fileID: 6272500022042264526}
