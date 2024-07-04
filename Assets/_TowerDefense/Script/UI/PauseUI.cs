@@ -21,25 +21,19 @@ namespace V.TowerDefense
         {
             gameObject.SetActive(true);
 
-            AddListenerToEvent(_pauseBTN, OnPauseEvent);
-            AddListenerToEvent(_exitBTN, OnExitEvent);
-            AddListenerToEvent(_resumeBTN, OnResumeEvent);
+            AddListenerToEvent(_pauseBTN, () => OnPauseEvent?.Invoke());
+            AddListenerToEvent(_exitBTN, () => OnExitEvent?.Invoke());
+            AddListenerToEvent(_resumeBTN, () => OnResumeEvent?.Invoke());
         }
-
-        private void Start() 
+        
+        // Action 實際上是引用
+        private void AddListenerToEvent(Button button, Action eventAction)
         {
-            // gameObject.SetActive(false);    
-            _pauseBTN.onClick.AddListener(() =>
-            {
-                OnPauseEvent?.Invoke();
-            });
-        }
-
-        private void AddListenerToEvent(Button button, Action @event)
-        {
+            if(button == null)  return;
             button.onClick.AddListener(() =>
             {
-                @event?.Invoke();
+                // 實際這裡是調用 () => lambda 裡的 func
+                eventAction?.Invoke();
             });
         }
     }

@@ -128,7 +128,7 @@ namespace V.TowerDefense
         {
             if(_eMoveDir == EMoveDirection.Left)
             {
-                GameEventManager.I.IncreaseMoney(_unitConfig.CurrentLevel);
+                GameEventManager.I.CoinEvent.IncreaseMoney(_unitConfig.CurrentLevel);
             }
 
             yield return new WaitForEndOfFrame();

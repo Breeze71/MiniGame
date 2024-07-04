@@ -13,7 +13,7 @@ namespace V.TowerDefense
         {
             coinBTN.onClick.AddListener(() =>
             {
-                GameEventManager.I.IncreaseMoney(1);
+                GameEventManager.I.CoinEvent.IncreaseMoney(1);
             });
         }
     }

@@ -12,17 +12,20 @@ namespace V.TowerDefense
 
         private void OnEnable() 
         {
-            _pauseUI.OnPauseEvent += PauseUI_OnPause;
+            _pauseUI.OnPauseEvent += OnPause;
+            _pauseUI.OnResumeEvent += OnResume;
+            _pauseUI.OnExitEvent += OnExit;
         }
 
         private void OnDisable() 
         {
-            _pauseUI.OnPauseEvent -= PauseUI_OnPause;
+            _pauseUI.OnPauseEvent -= OnPause;
+            _pauseUI.OnResumeEvent -= OnResume;
+            _pauseUI.OnExitEvent -= OnExit;
         }
 
-        private void PauseUI_OnPause()
+        private void OnPause()
         {
-            Debug.Log("press pause");
             if(_pauseUI.gameObject.activeSelf)
             {
                 _pauseUI.gameObject.SetActive(false);
@@ -32,5 +35,16 @@ namespace V.TowerDefense
                 _pauseUI.gameObject.SetActive(true);                
             }
         }
+
+        private void OnResume()
+        {
+            
+        }
+
+        private void OnExit()
+        {
+            
+        }
+
     }
 }

@@ -13,7 +13,7 @@ namespace V.TowerDefense
         private void OnEnable() 
         {
             _upgradeUI.UpgradeBTNEvent += UpgradeUI_UpgradeBTN;
-            GameEventManager.I.OnUpgradeEvent += GameEventManager_I_OnUpgrade;
+            GameEventManager.I.CoinEvent.OnUpgradeEvent += GameEventManager_I_OnUpgrade;
         }
 
         private void OnDisable() 
@@ -23,7 +23,7 @@ namespace V.TowerDefense
 
         private void UpgradeUI_UpgradeBTN(UpgradeBTNUI bTNUI)
         {
-            GameEventManager.I.UpgradeUnit(bTNUI);
+            GameEventManager.I.CoinEvent.UpgradeUnit(bTNUI);
         }
 
         private void GameEventManager_I_OnUpgrade(UpgradeBTNUI bTNBase)

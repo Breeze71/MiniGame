@@ -11,11 +11,11 @@ namespace V.TowerDefense
 
         private void OnEnable() 
         {
-            GameEventManager.I.OnMoneyChangedEvent += GameEventManager_I_OnMoneyChangedEvent;
+            GameEventManager.I.CoinEvent.OnMoneyChangedEvent += GameEventManager_I_OnMoneyChangedEvent;
         }
         private void OnDisable() 
         {
-            GameEventManager.I.OnMoneyChangedEvent -= GameEventManager_I_OnMoneyChangedEvent;
+            GameEventManager.I.CoinEvent.OnMoneyChangedEvent -= GameEventManager_I_OnMoneyChangedEvent;
         }
 
         private void GameEventManager_I_OnMoneyChangedEvent(int amount)
