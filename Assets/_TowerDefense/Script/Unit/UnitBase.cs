@@ -48,6 +48,7 @@ namespace V.TowerDefense
         {
             _attackCDTimer.OnTimerDone += AttackTimer_OnTimerDone;
             HealthSystem.HealthChangedEvent += HealthSystem_HealthChangedEvent;
+            GameEventManager.I.GameStateEvent.OnStateChange += GameStateEvent_OnStateChange;
         }
 
         protected virtual void Start()
@@ -73,6 +74,7 @@ namespace V.TowerDefense
         {
             _attackCDTimer.OnTimerDone -= AttackTimer_OnTimerDone;
             HealthSystem.HealthChangedEvent -= HealthSystem_HealthChangedEvent;
+            GameEventManager.I.GameStateEvent.OnStateChange -= GameStateEvent_OnStateChange;
             
             if(_disableMoveCoroutine != null)
             {
@@ -140,6 +142,18 @@ namespace V.TowerDefense
         public void Spawn(Transform parent)
         {
             Instantiate(this, parent);
+        }
+
+        private void GameStateEvent_OnStateChange(EGameState state)
+        {
+            if(state == EGameState.Pause)
+            {
+                _isPause = true;
+            }
+            else if(state == EGameState.Resume || state == EGameState.None)
+            {
+                _isPause = false;
+            }
         }
 
         // test

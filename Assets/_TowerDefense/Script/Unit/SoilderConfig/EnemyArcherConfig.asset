@@ -19,7 +19,7 @@ MonoBehaviour:
   AttackTimerMax: 0.5
   DamagableLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   SummonCost: 5
   UpgradeMultiplier: 0.2
   UpgradeMultiplierPerPurchase: 0.5

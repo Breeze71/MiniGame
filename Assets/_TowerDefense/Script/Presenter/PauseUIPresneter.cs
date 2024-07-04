@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace V.TowerDefense
 {
@@ -40,12 +41,13 @@ namespace V.TowerDefense
 
         private void OnResume()
         {
+            _pauseUI.gameObject.SetActive(false);
             GameEventManager.I.GameStateEvent.ChangeState(EGameState.Resume);            
         }
 
         private void OnExit()
         {
-            
+            Loader.LoadScene(EScene.STD_MainMenu);
         }
 
     }
