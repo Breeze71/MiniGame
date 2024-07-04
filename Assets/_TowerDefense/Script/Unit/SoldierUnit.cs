@@ -43,6 +43,7 @@ namespace V.TowerDefense
         private void HitDetect()
         {
             if(!_canAttack) return;
+            if(_isPause)    return;
             
             Collider2D hitUnitColl;
             hitUnitColl = Physics2D.OverlapBox(_hitBoxOffest, _hitRangeConfig.HitBox.size, 0f, _unitConfig.DamagableLayer);

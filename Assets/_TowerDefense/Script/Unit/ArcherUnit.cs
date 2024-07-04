@@ -29,6 +29,8 @@ namespace V.TowerDefense
         // 射程之內
         private void HandleDamagableInRange()
         {
+            if(_isPause)    return;
+
             Vector3 endPos;
             Vector3 sightdir = new Vector2((int)_eMoveDir, 0f);
             RaycastHit2D hit2D = Physics2D.Raycast(_firePoint.position, sightdir,  _hitRangeConfig.Range, _unitConfig.DamagableLayer);

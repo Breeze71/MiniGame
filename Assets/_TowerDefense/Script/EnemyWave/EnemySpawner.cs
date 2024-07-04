@@ -4,13 +4,6 @@ using UnityEngine;
 
 namespace V.TowerDefense
 {
-    public enum EWaveState
-    {
-        Idle,
-        Start,
-        End,
-    }
-
     public class EnemySpawner : MonoBehaviour
     {        
         [SerializeField] private Transform spawnPoint;

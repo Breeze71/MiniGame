@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db43479108b7214c8033d0f0740fa3f, type: 3}
   m_Name: TapCoin 1
   m_EditorClassIdentifier: 
-  AxisToAffect: 2
+  AxisToAffect: 1
   CanOverwritten: 1
   PlayOnStart: 0
+  PlayOnEnable: 0
   CanPlayEveryTime: 1
   PlayPercentage: 100
   Duration: 0.5

@@ -9,6 +9,7 @@ namespace V.TowerDefense
         public static GameEventManager I {get; private set;}
 
         public CoinEvent CoinEvent {get; private set;}
+        public GameStateEvent GameStateEvent {get; private set;}
 
         private void Awake() 
         {
@@ -21,6 +22,7 @@ namespace V.TowerDefense
             I = this;
 
             CoinEvent = new CoinEvent();
+            GameStateEvent = new GameStateEvent();
         }
     }
 }

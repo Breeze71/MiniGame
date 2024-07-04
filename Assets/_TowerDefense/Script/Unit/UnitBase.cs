@@ -32,6 +32,7 @@ namespace V.TowerDefense
         [SerializeField] private float _disableMoveTimer = .25f;
         private Coroutine _disableMoveCoroutine;
         [SerializeField] protected bool _canMove = true;
+        protected bool _isPause = false;
 
 
         #region LC
@@ -58,6 +59,7 @@ namespace V.TowerDefense
         {            
             if(!IsGrounded())   return;
             if(!_canMove)   return;
+            if(_isPause)    return;
             
             _rb.velocity = _moveDir * _moveSpeed;
         }

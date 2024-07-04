@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <_eMoveDir>k__BackingField: -1
-  _unitConfig: {fileID: 11400000, guid: 6b7d027c2d44b2146a0f77d2189e6e9a, type: 2}
+  _unitConfig: {fileID: 11400000, guid: bd514cb2aef89b441ba2ab8dbc6b7b77, type: 2}
   _hitRangeConfig: {fileID: 11400000, guid: c00f1e95695ddf94088b24ac0b912001, type: 2}
   _groundCheck: {fileID: 4577394936802596508}
   _moveSpeed: 1

@@ -28,17 +28,19 @@ namespace V.TowerDefense
         {
             if(_pauseUI.gameObject.activeSelf)
             {
+                GameEventManager.I.GameStateEvent.ChangeState(EGameState.Resume);
                 _pauseUI.gameObject.SetActive(false);
             }
             else
             {
+                GameEventManager.I.GameStateEvent.ChangeState(EGameState.Pause);
                 _pauseUI.gameObject.SetActive(true);                
             }
         }
 
         private void OnResume()
         {
-            
+            GameEventManager.I.GameStateEvent.ChangeState(EGameState.Resume);            
         }
 
         private void OnExit()
