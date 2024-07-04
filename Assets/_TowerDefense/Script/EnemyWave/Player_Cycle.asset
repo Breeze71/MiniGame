@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b1217177a07b2418a3d4a89979a3fb, type: 3}
+  m_Name: Player_Cycle
+  m_EditorClassIdentifier: 
+  Waves:
+  - isPause: 0
+    timeToNextWave: 3
+    timeToNextEnemy: 0.5
+    units:
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+  - isPause: 0
+    timeToNextWave: 1.6
+    timeToNextEnemy: 0.8
+    units:
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+  - isPause: 0
+    timeToNextWave: 2
+    timeToNextEnemy: 0.5
+    units:
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+  IsCycle: 1
+  CurrentWaves:
+  - isPause: 0
+    timeToNextWave: 3
+    timeToNextEnemy: 0.5
+    units:
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+  - isPause: 0
+    timeToNextWave: 1.6
+    timeToNextEnemy: 0.8
+    units:
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+    - {fileID: 6437593264082430969, guid: c78c1ff844a4c5c439c23749e4baff65, type: 3}
+  - isPause: 0
+    timeToNextWave: 2
+    timeToNextEnemy: 0.5
+    units:
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+    - {fileID: 6869377638092075353, guid: 1000469421d11c74599a24ef3e48867b, type: 3}

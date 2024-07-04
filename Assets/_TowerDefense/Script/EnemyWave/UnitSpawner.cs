@@ -1,20 +1,20 @@
 using System;
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace V.TowerDefense
 {
-    public class EnemySpawner : MonoBehaviour
+    public class UnitSpawner : MonoBehaviour
     {        
         [SerializeField] private Transform spawnPoint;
-
-        [SerializeField] private Wave[] waveList;
-
+        [Expandable][SerializeField] private UnitWaveSO _config;
+        
+        [SerializeField] 
+        [ReadOnly] private int currentWaveIndex = 0;
         private EWaveState _eWaveState;
-        [SerializeField] [NaughtyAttributes.ReadOnly] private int currentWaveIndex;
         private float waveCountDown;
-        [SerializeField] private bool isTesting;
-        private bool _isPause = false;
+        [ReadOnly] [SerializeField] private bool _isPause = false;
 
         private void OnEnable() 
         {
@@ -30,6 +30,8 @@ namespace V.TowerDefense
         {
             _eWaveState = EWaveState.Idle;   
             _eWaveState = EWaveState.Start; 
+
+            _config.SetupWave();
         }
 
         private void Update()
@@ -49,10 +51,10 @@ namespace V.TowerDefense
 
         private void StartWave()
         {
-            if(currentWaveIndex < waveList.Length && _eWaveState == EWaveState.Start)
+            if(currentWaveIndex < _config.CurrentWaves.Length - 1 && _eWaveState == EWaveState.Start)
             {
-                waveCountDown = waveList[currentWaveIndex].timeToNextWave;
-                StartCoroutine(waveList[currentWaveIndex].Coroutine_SpawnEnemies(spawnPoint));
+                waveCountDown = _config.CurrentWaves[currentWaveIndex].timeToNextWave;
+                StartCoroutine(_config.CurrentWaves[currentWaveIndex].Coroutine_SpawnEnemies(spawnPoint));
 
                 currentWaveIndex++; // 下一波生成時間
             }
@@ -66,7 +68,7 @@ namespace V.TowerDefense
 
         private void ResetWave()
         {
-            if(isTesting)
+            if(_config.IsCycle)
             {
                 currentWaveIndex = 0;
                 _eWaveState = EWaveState.Start;
@@ -78,12 +80,12 @@ namespace V.TowerDefense
             if(state == EGameState.Pause)
             {
                 _isPause = true;
-                waveList[currentWaveIndex].isPause = true;
+                _config.CurrentWaves[currentWaveIndex].isPause = true;
             }
             else if(state == EGameState.Resume || state == EGameState.None)
             {
                 _isPause = false;
-                waveList[currentWaveIndex].isPause = false;
+                _config.CurrentWaves[currentWaveIndex].isPause = false;
             }
         }
     }
@@ -91,17 +93,16 @@ namespace V.TowerDefense
     [Serializable]
     public class Wave
     {
+        public bool isPause;
         public float timeToNextWave;
-        public bool isPause {private get; set;} = false;
-
         [SerializeField] private float timeToNextEnemy;
-        [SerializeField] private UnitBase[] enemyList;
+        [SerializeField] private UnitBase[] units;
 
         public IEnumerator Coroutine_SpawnEnemies(Transform _spawnPos)
         {
-            foreach(UnitBase enemy in enemyList)
+            foreach(UnitBase unit in units)
             {
-                enemy.Spawn(_spawnPos);
+                unit.Spawn(_spawnPos);
                 
                 yield return new WaitUntil(() => !isPause);
                 yield return new WaitForSeconds(timeToNextEnemy);
