@@ -10,6 +10,7 @@ namespace V.Tool.JuicyFeeling
         public SquashStretchAxis AxisToAffect = SquashStretchAxis.Y;
         public bool CanOverwritten;
         public bool PlayOnStart;
+        public bool PlayOnEnable = false;
         public bool CanPlayEveryTime = true;
         [Range(0, 100f), Tooltip("播放的機率")]
         public float PlayPercentage = 100f;  

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace V.Tool.JuicyFeeling
@@ -10,8 +11,7 @@ namespace V.Tool.JuicyFeeling
         private static event Action onSquashAndStretchAll;
 
         [SerializeField] private Transform affectTransfrom;
-        // [SerializeField] private List<Transform> affectTransforms;
-        public SquashStretchSO config;
+        [Expandable] public SquashStretchSO config;
 
         private Coroutine squashAndStretchCoroutine;
         private Coroutine squashAndStretchAllCoroutine;
@@ -52,6 +52,11 @@ namespace V.Tool.JuicyFeeling
         private void OnEnable() 
         {
             onSquashAndStretchAll += PlaySquashAndStretch;
+
+            if(config.PlayOnEnable)
+            {
+                StartSquashAndStretch();
+            }
         }
         private void OnDisable() 
         {
