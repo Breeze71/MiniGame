@@ -30,7 +30,7 @@ namespace V.TowerDefense
         private void GameEventManager_I_OnMoneyEnoughEvent(MenuBTNBase bTNUI)
         {
             // spawn soilder
-            _soilderSpawner.SpawnSoilder(bTNUI.SoilderConfig.soilderPrefabs);
+            _soilderSpawner.SpawnSoilder(bTNUI.SoilderConfig.SoilderPrefabs);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace V.TowerDefense
         // soilder so
         [field : SerializeField] public Button Button {get; private set;}
 
+        [SerializeField] private Image _iconIMG;
         [SerializeField] private TextMeshProUGUI _attackTEXT;
         [SerializeField] private TextMeshProUGUI _healthTEXT;
 
@@ -37,7 +38,7 @@ namespace V.TowerDefense
         {
             base.Start();
             
-            UpdateSoldierUI();    
+            UpdateSoldierUI();  
         }
 
         private void OnDisable() 
@@ -62,13 +63,14 @@ namespace V.TowerDefense
         {
             if(SoilderConfig != null)
             {
-                Debug.Log("update soilder ui");
+                _iconIMG.sprite = SoilderConfig.Img;  
 
                 NumDisplay(SoilderConfig.CurrentAttack, _attackTEXT);
                 NumDisplay(SoilderConfig.CurrentHealth, _healthTEXT);
             }
             else
             {
+                _iconIMG.sprite = null;
                 _attackTEXT.text = "---";
                 _healthTEXT.text = "---";
             }

@@ -25,6 +25,11 @@ namespace V.TowerDefense
             AddListenerToEvent(_exitBTN, () => OnExitEvent?.Invoke());
             AddListenerToEvent(_resumeBTN, () => OnResumeEvent?.Invoke());
         }
+
+        private void Start() 
+        {
+            gameObject.SetActive(false);
+        }
         
         // Action 實際上是引用
         private void AddListenerToEvent(Button button, Action eventAction)

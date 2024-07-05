@@ -36,7 +36,6 @@ namespace V
             }
 
             Instance = this;
-            DontDestroyOnLoad(this);
         }
 
         private void OnEnable() 
@@ -126,8 +125,11 @@ namespace V
         {
             if(context.phase == InputActionPhase.Performed)
             {
+                // Loader.LoadScene(TowerDefense.EScene.STD_1);
                 TapEvent?.Invoke();
                 _mapUI.SetActive(true);
+
+                SetActionMap(InputType.GamePlay);
             }
         }
         #endregion

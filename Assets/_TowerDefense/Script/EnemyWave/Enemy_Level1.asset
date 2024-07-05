@@ -25,7 +25,7 @@ MonoBehaviour:
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-  - isPause: 0
+  - isPause: 1
     timeToNextWave: 1.6
     timeToNextEnemy: 0.8
     units:
@@ -39,7 +39,7 @@ MonoBehaviour:
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-  IsCycle: 0
+  IsCycle: 1
   CurrentWaves:
   - isPause: 0
     timeToNextWave: 3
@@ -53,7 +53,7 @@ MonoBehaviour:
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
     - {fileID: 7017867158798271640, guid: 882ab3290fc88764eb2ac41fa043c62b, type: 3}
-  - isPause: 0
+  - isPause: 1
     timeToNextWave: 1.6
     timeToNextEnemy: 0.8
     units:

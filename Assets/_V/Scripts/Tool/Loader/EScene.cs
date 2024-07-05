@@ -6,9 +6,9 @@ namespace V.TowerDefense
 {
     public enum EScene
     {
-        STD_MainMenu,
-        STD_1,
-        STD_2,
-        LoadingScene,
+        LoadingScene = -1,
+        STD_MainMenu = 0,
+        STD_1 = 1,
+        STD_2 = 2,
     }
 }

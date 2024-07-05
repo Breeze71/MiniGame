@@ -9,8 +9,10 @@ namespace V.TowerDefense
     public class UnitSO : ScriptableObject
     {
         [ShowAssetPreview]
-        public GameObject soilderPrefabs;
-
+        public GameObject SoilderPrefabs;
+        [ShowAssetPreview]
+        public Sprite Img;
+        
         [SerializeField] private int Level = 1;
         [SerializeField] private int Attack = 15;
         [SerializeField] private int Health = 100; 
@@ -27,7 +29,6 @@ namespace V.TowerDefense
 
         public void ResetUnitSO()
         {
-            Debug.Log("Reset");
             CurrentLevel = Level;
             CurrentAttack = Attack;
             CurrentHealth = Health;

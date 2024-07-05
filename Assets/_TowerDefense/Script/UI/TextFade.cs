@@ -49,10 +49,10 @@ namespace V.TowerDefense
         {
             Sequence s = DOTween.Sequence();
             s.Append(_rectTransform.DOScale(_originScale, _duration).SetEase(Ease.OutCirc));
-            s.Join(_tipText.DOColor(_flashColor, _duration).SetDelay(_duration / 2f));
+            // s.Join(_tipText.DOColor(_flashColor, _duration).SetDelay(_duration / 2f));
 
-            // s.Join(_tipText.DOFade(1, _duration / 3));
-            // s.Join(_tipText.DOFade(.75f, _duration / 4).SetDelay(_duration / 1.5f));
+            s.Join(_tipText.DOFade(1, _duration / 3));
+            s.Join(_tipText.DOFade(.75f, _duration / 4).SetDelay(_duration / 1.5f));
             // s.Join(_rectTransform.DOMoveY(_yOffest, _duration).SetEase(Ease.OutCirc));
 
             s.SetLoops(-1);

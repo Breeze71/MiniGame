@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571f97d2ba8e24447904513bfcc73618, type: 3}
   m_Name: PlayerSoilderConfig
   m_EditorClassIdentifier: 
-  soilderPrefabs: {fileID: 817724188411529885, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+  SoilderPrefabs: {fileID: 817724188411529885, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
+  Img: {fileID: 21300000, guid: 0bae5e55f02caf54b86aef9d4f88a4bd, type: 3}
   Level: 1
   Attack: 3
   Health: 100

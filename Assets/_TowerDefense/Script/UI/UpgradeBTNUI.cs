@@ -17,6 +17,7 @@ namespace V.TowerDefense
 
         [SerializeField] private UnitUpgrade _unitUpgrade;
 
+        [SerializeField] private Image _iconIMG;
         [SerializeField] private TextMeshProUGUI _upgradeCostTEXT;
 
         [SerializeField] private TextMeshProUGUI _attackTEXT;
@@ -61,6 +62,8 @@ namespace V.TowerDefense
         {
             if(SoilderConfig != null)
             {
+                _iconIMG.sprite = SoilderConfig.Img;
+
                 int atkUp = _unitUpgrade.NextUpgradeValue(SoilderConfig.CurrentAttack, SoilderConfig.UpgradeMultiplier);
                 int hpUp = _unitUpgrade.NextUpgradeValue(SoilderConfig.CurrentHealth, SoilderConfig.UpgradeMultiplier);
                 UpdateUpgradeUpValue(atkUp, hpUp);
@@ -70,6 +73,8 @@ namespace V.TowerDefense
             }
             else
             {
+                _iconIMG.sprite = null;
+                
                 _attackTEXT.text = "---";
                 _healthTEXT.text = "---";
                 _upgradeCostTEXT.text = "---";
