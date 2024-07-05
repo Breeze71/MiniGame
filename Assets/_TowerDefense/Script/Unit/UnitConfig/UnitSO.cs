@@ -26,7 +26,10 @@ namespace V.TowerDefense
         [ReadOnly] public int CurrentLevel = 1;
         [ReadOnly] public int CurrentAttack = 15;
         [ReadOnly] public int CurrentHealth = 100;
-
+        private void OnEnable() 
+        {
+            ResetUnitSO();    
+        }
         public void ResetUnitSO()
         {
             CurrentLevel = Level;

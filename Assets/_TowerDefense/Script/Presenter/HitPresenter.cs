@@ -26,12 +26,12 @@ namespace V.TowerDefense
 
         private void Unit_OnHitDamagableCollEvent(Collider2D coll, int damageAmount)
         {
-            UnitBase hitUnit = coll.gameObject.GetComponent<UnitBase>();
+            // UnitBase hitUnit = coll.gameObject.GetComponent<UnitBase>();
+            IDamagable damagable = coll.gameObject.GetComponent<IDamagable>();
             
-            if(hitUnit != null)
+            if(damagable != null)
             {
-                hitUnit.OnHit();
-                hitUnit.HealthSystem.TakeDamage(damageAmount);
+                damagable.TakeDamage(damageAmount);
             }
         }
 

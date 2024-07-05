@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Dynamic;
+using Microsoft.Unity.VisualStudio.Editor;
 using NaughtyAttributes;
 using UnityEngine;
 using Timer = V.Utilities.Timer;
@@ -8,13 +9,14 @@ using Timer = V.Utilities.Timer;
 
 namespace V.TowerDefense
 {
-    public abstract class UnitBase : MonoBehaviour
+    public abstract class UnitBase : MonoBehaviour, IDamagable
     {
         public event Action<Collider2D, int> OnHitDamagableCollEvent;
         public event Action OnHitEvent;
-
-        public HealthSystem HealthSystem {get; private set;}
         [field : SerializeField] public EMoveDirection _eMoveDir{get; protected set;}
+
+        public HealthSystem HealthSystem { get; set; }
+
         [Expandable] [SerializeField] protected UnitSO _unitConfig;
 
         [Expandable][SerializeField] protected HitRangeSO _hitRangeConfig;
@@ -33,6 +35,8 @@ namespace V.TowerDefense
         private Coroutine _disableMoveCoroutine;
         [SerializeField] protected bool _canMove = true;
         protected bool _isPause = false;
+
+        [SerializeField] private SpriteRenderer _sprite;
 
 
         #region LC
@@ -54,6 +58,7 @@ namespace V.TowerDefense
         protected virtual void Start()
         {
             _moveDir = new Vector2((float)_eMoveDir, _rb.velocity.y).normalized;
+            _sprite.sprite = _unitConfig.Img;
         }
 
         private void FixedUpdate() 
@@ -94,9 +99,10 @@ namespace V.TowerDefense
         {
             OnHitDamagableCollEvent?.Invoke(hitUnitColl, damage);
         }
-        public void OnHit()
+        public void TakeDamage(int amount)
         {
             OnHitEvent?.Invoke();
+            HealthSystem.TakeDamage(amount);
         }
 
         #region Check
@@ -162,6 +168,5 @@ namespace V.TowerDefense
         {
             OnHitDamagableCollEvent?.Invoke(gameObject.GetComponent<Collider2D>(), 15);
         }
-        
     }
 }

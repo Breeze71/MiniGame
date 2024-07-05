@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerSoilderConfig
   m_EditorClassIdentifier: 
   SoilderPrefabs: {fileID: 817724188411529885, guid: 1000469421d11c74599a24ef3e48867b, type: 3}
-  Img: {fileID: 21300000, guid: 0bae5e55f02caf54b86aef9d4f88a4bd, type: 3}
+  Img: {fileID: 21300000, guid: 76e9d59d7eb797443a7fc6cbac6eb862, type: 3}
   Level: 1
   Attack: 3
   Health: 100
@@ -25,5 +25,5 @@ MonoBehaviour:
   UpgradeMultiplier: 0.2
   UpgradeMultiplierPerPurchase: 0.5
   CurrentLevel: 1
-  CurrentAttack: 15
+  CurrentAttack: 3
   CurrentHealth: 100

@@ -12,6 +12,7 @@ namespace V.TowerDefense
         [SerializeField] private RectTransform _rectTransform;
 
         [SerializeField] private TextMeshProUGUI _tipText;
+        [SerializeField] private TextMeshProUGUI _titleText;
         [SerializeField] private float _duration = .5f;
         [SerializeField] private Color _flashColor;
         // [SerializeField] private float _yOffest = 0.5f;
@@ -27,6 +28,7 @@ namespace V.TowerDefense
         private void OnScreenTap()
         {
             _rectTransform.gameObject.SetActive(false);
+            _titleText.gameObject.SetActive(false);
         }
 
         private void Start() 

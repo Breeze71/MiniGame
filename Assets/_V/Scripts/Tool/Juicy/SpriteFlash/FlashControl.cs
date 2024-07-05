@@ -15,7 +15,12 @@ public class FlashControl : MonoBehaviour
     private void Awake() 
     {
         _flashMat = _spriteRenderer.material;
-        // _flashMat.SetTexture("_Texture", _spriteRenderer.sprite);
+    }
+
+    private void Start() 
+    {
+        _flashMat.SetTexture("_Texture", _spriteRenderer.sprite.texture);
+        
     }
 
     [Button]

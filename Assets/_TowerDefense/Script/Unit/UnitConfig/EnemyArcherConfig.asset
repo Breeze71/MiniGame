@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyArcherConfig
   m_EditorClassIdentifier: 
   SoilderPrefabs: {fileID: 817724188411529885, guid: 62bb46712a2d4384e9cbf56b273f3c4c, type: 3}
-  Img: {fileID: 21300000, guid: a1801a6f2f3fc284496d803540941540, type: 3}
+  Img: {fileID: 21300000, guid: c61ea802a2f7d034fa6f411215e45a3c, type: 3}
   Level: 1
   Attack: 5
   Health: 50

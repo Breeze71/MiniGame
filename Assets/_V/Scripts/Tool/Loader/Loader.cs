@@ -28,6 +28,37 @@ public static class Loader
         SceneManager.LoadScene(EScene.LoadingScene.ToString());
     }
 
+    public static void ReLoadScene()
+    {
+        int currentSceneIndex = SceneManager.loadedSceneCount;
+        // recieved callback then Load to target scene
+        onLoaderCallback = () =>
+        {
+            // 可以在背景加載場景
+            ansyLoad = SceneManager.LoadSceneAsync(currentSceneIndex);
+        };   
+
+        
+        // loadong scene
+        SceneManager.LoadScene(EScene.LoadingScene.ToString());     
+    }
+
+    public static void LoadNextScene()
+    {
+        int currentSceneIndex = SceneManager.loadedSceneCount;
+
+        // recieved callback then Load to target scene
+        onLoaderCallback = () =>
+        {
+            // 可以在背景加載場景
+            ansyLoad = SceneManager.LoadSceneAsync(currentSceneIndex + 1);
+        };   
+
+        
+        // loadong scene
+        SceneManager.LoadScene(EScene.LoadingScene.ToString());          
+    }
+
     public static float GetLoadingProgress()
     {
         if(ansyLoad != null)

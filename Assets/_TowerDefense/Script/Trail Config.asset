@@ -12,54 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6057bbe02fbbb0d479efbd241071fa33, type: 3}
   m_Name: Trail Config
   m_EditorClassIdentifier: 
-  _material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  _material: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   _widthCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 2.1656406
-      outSlope: 2.1656406
-      tangentMode: 0
+      value: 0.1
+      inSlope: -0.49636033
+      outSlope: -0.49636033
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.03190899
-    - serializedVersion: 3
-      time: 0.024599895
-      value: 0.028910503
-      inSlope: -0.10540706
-      outSlope: -0.10540706
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.15305115
-      outWeight: 0.058789782
-    - serializedVersion: 3
-      time: 0.5192006
-      value: 0.009864921
-      inSlope: -0.017215379
-      outSlope: -0.017215379
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.87736577
-      value: 0.0050682733
-      inSlope: -0.018435631
-      outSlope: -0.018435631
+      time: 0.10073327
+      value: 0.05
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
+      value: 0.05
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -67,17 +49,17 @@ MonoBehaviour:
   _minVertexDistance: 0.1
   _trailGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 59.23954, g: 98.992386, b: 191.74904, a: 1}
+    key1: {r: 5.772551, g: 11.294122, b: 24.470598, a: 1}
+    key2: {r: 22.363523, g: 22.363523, b: 22.363523, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 65535
-    ctime2: 0
+    ctime1: 3662
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -93,9 +75,9 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_ColorSpace: -1
-    m_NumColorKeys: 2
+    m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  _isEmitting: 0
-  <Duration>k__BackingField: 0.5
+  _isEmitting: 1
+  <Duration>k__BackingField: 0.05
   <MissDistance>k__BackingField: 5
   <SimulationSpeed>k__BackingField: 10

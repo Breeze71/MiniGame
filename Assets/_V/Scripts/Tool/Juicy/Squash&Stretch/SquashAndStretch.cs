@@ -70,6 +70,7 @@ namespace V.Tool.JuicyFeeling
         #endregion
 
         #region Squash And Stretch
+        [Button]
         public void PlaySquashAndStretch()
         {
             if (config.CanLoop && !config.CanOverwritten) 
@@ -79,6 +80,7 @@ namespace V.Tool.JuicyFeeling
 
             StartSquashAndStretch();
         }
+
         public void PlaySquashAndStretch(SquashStretchSO _SquashStretchSO)
         {
             if (config.CanLoop && !config.CanOverwritten) 

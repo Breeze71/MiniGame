@@ -9,7 +9,10 @@ namespace V.TowerDefense
     public class MapUI : MonoBehaviour
     {
         [SerializeField] private Button[] levelBTNs;
-
+        private void OnEnable() 
+        {
+            gameObject.SetActive(true);                
+        }
         private void Start() 
         {
             for(int i = 0; i < levelBTNs.Length; i++)
@@ -20,6 +23,7 @@ namespace V.TowerDefense
                     Loader.LoadScene((EScene)Enum.ToObject(typeof(EScene), index));
                 });
             }    
+            gameObject.SetActive(false);
         }
     }
 }
