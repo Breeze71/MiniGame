@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Dynamic;
-using Microsoft.Unity.VisualStudio.Editor;
 using NaughtyAttributes;
 using UnityEngine;
 using Timer = V.Utilities.Timer;
