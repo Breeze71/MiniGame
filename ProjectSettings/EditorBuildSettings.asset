@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_FortuneGame/scene.unity
+    guid: 2f223235f733955479118213a95b4ae2
+  - enabled: 1
     path: Assets/_TowerDefense/Scene/STD_MainMenu.unity
     guid: 539c2d1f8fd659544b46cad8dbb3df46
   - enabled: 1
@@ -13,7 +16,7 @@ EditorBuildSettings:
     guid: 009e044ef96f8c245bf9a719d85f98a0
   - enabled: 1
     path: Assets/_TowerDefense/Scene/STD_2.unity
-    guid: 08e3e2dee8f498f4589daa5afef97fe3
+    guid: a1a4eee1d4d204d45b0222ae0d017d4c
   - enabled: 1
     path: Assets/_TowerDefense/Scene/LoadingScene.unity
     guid: 6a5db1e5cb61e9d4d81d5caf7d86fc18
